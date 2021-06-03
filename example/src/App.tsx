@@ -1,10 +1,29 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { ExampleComponent } from '@datnq/react-tw'
-import '@datnq/react-tw/dist/index.css'
+import Layout from './components/Layout'
+import routes from './routes'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <Router>
+      <Layout>
+        <Switch>
+          {Object.keys(routes).map((key) => {
+            const route = routes[key]
+            return (
+              <Route
+                key={key}
+                exact={route.exact}
+                component={route.component}
+                path={route.href}
+              />
+            )
+          })}
+        </Switch>
+      </Layout>
+    </Router>
+  )
 }
 
 export default App
