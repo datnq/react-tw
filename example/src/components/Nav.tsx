@@ -12,8 +12,8 @@ const Nav = ({ routes, className }: PropsWithChildren<NavProps>) => {
             key={key}
             to={route.href}
             exact={route.exact}
-            className='block px-6 py-2 text-sm hover:bg-gray-100 text-gray-800'
-            activeClassName='border-r-4 border-indigo-500 font-bold'
+            className='block px-6 py-2 text-sm hover:bg-gray-100 text-gray-600'
+            activeClassName='border-r-4 border-indigo-500 font-bold text-gray-800'
           >
             {route.label}
           </NavLink>

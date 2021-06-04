@@ -1,6 +1,7 @@
 import Home from './Home'
 import { NavItemProps } from '../types'
 import Buttons from './Buttons'
+import Dropdowns from './Dropdowns'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -13,6 +14,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/buttons',
     label: 'Button',
     component: Buttons
+  },
+  dropdown: {
+    href: '/dropdown',
+    label: 'Dropdown',
+    component: Dropdowns
   }
 }
 

@@ -30,7 +30,7 @@
   },
   "include": [
     "src"
-  ],
+, "../src/components/button/button"  ],
   "exclude": [
     "node_modules",
     "build"

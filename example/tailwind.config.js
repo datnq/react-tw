@@ -1,4 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const { plugin } = require('@datnq/react-tw')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: [],
@@ -6,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       gridTemplateColumns: {
         layout: '200px minmax(0, 1fr)'
@@ -14,10 +16,9 @@ module.exports = {
       gridTemplateRows: {
         layout: 'minmax(0, 1fr) 60px'
       }
-    },
+    }
   },
   variants: {
-    extend: {},
-  },
-  plugins: [],
+    extend: {}
+  }
 }
