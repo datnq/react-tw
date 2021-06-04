@@ -64,15 +64,17 @@ declare module 'tailwindcss' {
   }
 }
 
-/**
- * Adds types to the plugin API
- */
+// /**
+//  * Adds types to the plugin API
+//  */
 declare module 'tailwindcss/plugin' {
-  const withOptions: (
-    plugin: (options: unknown) => (helpers: Helpers) => void,
-    config: (options: unknown) => Partial<TwConfiguration>
-  ) => {
-    handler: (helpers: Helpers) => void
-    config: unknown
-  }
+  // const withOptions: (
+  //   plugin: (options: unknown) => (helpers: Helpers) => void,
+  //   config: (options: unknown) => Partial<TwConfiguration>
+  // ) => {
+  //   handler: (helpers: Helpers) => void
+  //   config: unknown
+  // }
+  function plugin(callback: (helpers: Helpers) => void): void
+  export = plugin
 }

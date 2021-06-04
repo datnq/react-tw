@@ -1,13 +1,43 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { ComponentPropsWithoutRef, ReactElement } from 'react'
 
 export interface ThemeProps {
   button: {
-    variant: DefaultButtonVariants & { [variant: string]: ClassNames }
-    size: DefaultButtonSizes & { [size: string]: ClassNames }
+    variant: DefaultButtonVariants & { [x: string]: ClassNames }
+    size: DefaultButtonSizes & { [x: string]: ClassNames }
+  }
+  input: {
+    state: DefaultInputStates & { [x: string]: ClassNames }
+    size: DefaultControlSizes & { [x: string]: ClassNames }
+  }
+  checkbox: {
+    state: DefaultCheckboxStates & { [x: string]: ClassNames }
+    size: DefaultControlSizes & { [x: string]: ClassNames }
+  }
+  radio: {
+    state: DefaultCheckboxStates & { [x: string]: ClassNames }
+    size: DefaultControlSizes & { [x: string]: ClassNames }
   }
 }
 
 type ClassNames = string | string[]
+
+export interface DefaultControlState {
+  normal: ClassNames
+  disabled: ClassNames
+  valid: ClassNames
+  invalid: ClassNames
+}
+
+export interface DefaultCheckboxStates extends DefaultControlState {}
+
+export interface DefaultInputStates extends DefaultControlState {}
+
+export interface DefaultControlSizes {
+  sm: ClassNames
+  md: ClassNames
+  lg: ClassNames
+}
 
 export interface DefaultButtonVariants {
   default: ClassNames
@@ -16,10 +46,7 @@ export interface DefaultButtonVariants {
   success: ClassNames
 }
 
-export interface DefaultButtonSizes {
-  sm: ClassNames
-  md: ClassNames
-  lg: ClassNames
+export interface DefaultButtonSizes extends DefaultControlSizes {
   'narrow-sm': ClassNames
   'narrow-md': ClassNames
   'narrow-lg': ClassNames
@@ -65,4 +92,17 @@ export interface DropdownProps {
     active: boolean,
     item: DropdownItemProps
   ) => unknown
+}
+
+export interface InputProps extends ComponentPropsWithoutRef<'input'> {
+  state?: 'normal' | 'valid' | 'invalid'
+  inputSize?: 'sm' | 'md' | 'lg'
+}
+export interface TextareaProps extends ComponentPropsWithoutRef<'textarea'> {
+  state?: 'default' | 'valid' | 'invalid'
+  inputSize?: 'sm' | 'md' | 'lg'
+}
+export interface CheckboxProps extends ComponentPropsWithoutRef<'input'> {
+  state?: 'normal' | 'valid' | 'invalid'
+  inputSize?: 'sm' | 'md' | 'lg'
 }

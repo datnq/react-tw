@@ -1,8 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-const { plugin } = require('@datnq/react-tw')
-const colors = require('tailwindcss/colors')
 
 module.exports = {
+  jit: true,
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -19,6 +18,20 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
-  }
+    extend: {
+      borderColor: ['checked', 'disabled'],
+      backgroundColor: ['checked', 'disabled', 'checked-sibling'],
+      cursor: ['disabled'],
+      ringColor: ['checked'],
+      ringOffsetColor: ['checked'],
+      ringOffsetWidth: ['checked'],
+      ringOpacity: ['checked'],
+      ringWidth: ['checked'],
+      opacity: ['checked-sibling'],
+      transform: ['checked-sibling'],
+      translate: ['checked-sibling'],
+      filter: ['disabled']
+    }
+  },
+  plugins: [require('@datnq/react-tw').plugin]
 }
