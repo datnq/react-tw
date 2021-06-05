@@ -3,6 +3,8 @@ import { NavItemProps } from '../types'
 import Buttons from './Buttons'
 import Dropdowns from './Dropdowns'
 import Inputs from './Inputs'
+import Avatars from './Avatars'
+import Selectors from './Selectors'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -10,6 +12,11 @@ const routes: { [key: string]: NavItemProps } = {
     label: 'Getting Started',
     exact: true,
     component: Home
+  },
+  avatars: {
+    href: '/avatar',
+    label: 'Avatar',
+    component: Avatars
   },
   buttons: {
     href: '/buttons',
@@ -20,6 +27,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/controls',
     label: 'Input',
     component: Inputs
+  },
+  selectors: {
+    href: '/selectors',
+    label: 'Selector',
+    component: Selectors
   },
   dropdown: {
     href: '/dropdown',

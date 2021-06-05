@@ -11,6 +11,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       narrow,
       disabled,
+      className,
       ...rest
     },
     ref
@@ -28,7 +29,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizeStyles,
           {
             'bg-opacity-50': disabled
-          }
+          },
+          className
         )}
         ref={ref}
         {...rest}

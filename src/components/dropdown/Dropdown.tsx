@@ -63,7 +63,7 @@ const Dropdown = ({
       {children}
       {items && (
         <DropdownMenu>
-          <div className='px-1 py-1 space-y-1'>
+          <div className='p-1 space-y-1'>
             {items.map((item) => (
               <Menu.Item key={item.key}>
                 {({ active }): ReactElement =>
@@ -72,7 +72,7 @@ const Dropdown = ({
                   ) : (
                     <button
                       className={clsx(
-                        'py-2 px-4 text-sm w-full text-left focus:outline-none text-gray-800',
+                        'py-2 px-4 text-sm w-full text-left focus:outline-none text-gray-800 rounded-sm',
                         {
                           'bg-gray-100 text-gray-900': active
                         }

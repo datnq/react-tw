@@ -1,0 +1,146 @@
+import React, { Fragment, ReactElement, useMemo } from 'react'
+import { Listbox } from '@headlessui/react'
+import { useCalendar, shortDayNames } from '../../hooks'
+import { ListItem, Options } from './Listbox'
+import { Button } from '../button'
+import { splitToRows } from '../../utils'
+import { DatepickerProps } from './types'
+import clsx from 'clsx'
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from '../icons'
+import { useTheme } from '../theme-provider'
+
+interface DateFormats {
+  long: Intl.DateTimeFormatOptions
+  short: Intl.DateTimeFormatOptions
+}
+
+export const dateFormats: DateFormats = {
+  long: {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  },
+  short: {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }
+}
+
+export const formatDate = (
+  date: Date,
+  locale: string,
+  format: Intl.DateTimeFormatOptions = dateFormats.long
+): string => {
+  return new Intl.DateTimeFormat(locale, format).format(date)
+}
+
+const Datepicker = ({
+  value,
+  placeholder,
+  onChange,
+  disabled,
+  locale = 'en-US',
+  format = dateFormats.short,
+  inputSize = 'md',
+  state = 'normal',
+  className
+}: DatepickerProps): ReactElement => {
+  const calendar = useCalendar(value || new Date())
+  const weeks = useMemo(() => splitToRows(calendar.items, 7), [calendar])
+
+  const theme = useTheme()
+  const sizeStyles = theme?.input.size[inputSize]
+  const stateStyles = theme?.input.state[state]
+  const disabledStyles = theme?.input.state.disabled
+
+  return (
+    <Listbox
+      as='div'
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+      className={clsx('relative inline-flex align-middle', className)}
+    >
+      <Listbox.Button as={Fragment}>
+        <Button
+          className={clsx(
+            '!pr-2 w-full text-left',
+            sizeStyles,
+            stateStyles,
+            disabled ? disabledStyles : ''
+          )}
+        >
+          <span
+            className={clsx('block flex-grow', {
+              'text-gray-400': !value
+            })}
+          >
+            {value ? formatDate(value, locale, format) : placeholder}
+          </span>
+          <CalendarIcon className='h-4 w-4' />
+        </Button>
+      </Listbox.Button>
+      <Options className='p-2 min-w-min'>
+        <table className='border-collapse'>
+          <thead>
+            <tr>
+              <td colSpan={7} className='p-2'>
+                <div className='flex items-center space-x-2'>
+                  <strong className='flex-grow'>
+                    {calendar.month.name} &ndash; {calendar.year}
+                  </strong>
+                  <Button narrow onClick={calendar.prevMonth} size='sm'>
+                    <ChevronLeftIcon className='w-4 h-4' />
+                  </Button>
+                  <Button narrow onClick={calendar.nextMonth} size='sm'>
+                    <ChevronRightIcon className='w-4 h-4' />
+                  </Button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              {shortDayNames.map((day) => (
+                <th key={day} className='text-center py-1 px-2 text-sm'>
+                  {day}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {weeks.map((week, index) => (
+              <tr key={index}>
+                {week.map(({ fullDate, name, isSameMonth, isToday, date }) => {
+                  const isSelected =
+                    value && fullDate.toDateString() === value.toDateString()
+                  return (
+                    <Listbox.Option value={fullDate} as='td' key={name}>
+                      {({ selected }): ReactElement => (
+                        <ListItem
+                          selected={selected}
+                          className={clsx(
+                            'w-8 h-8 p-0 rounded text-right flex items-center justify-center mx-auto',
+                            {
+                              'font-bold text-indigo-500':
+                                isToday && !isSelected,
+                              'text-gray-400': !isSameMonth,
+                              '!text-white bg-indigo-500': isSelected
+                            }
+                          )}
+                        >
+                          {date}
+                        </ListItem>
+                      )}
+                    </Listbox.Option>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Options>
+    </Listbox>
+  )
+}
+
+export default Datepicker
