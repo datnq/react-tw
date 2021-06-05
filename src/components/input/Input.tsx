@@ -20,8 +20,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         className={clsx(
           'align-middle border focus:outline-none focus:ring-4 transition-colors',
           sizeStyles,
-          stateStyles,
-          disabled ? disabledStyles : '',
+          stateStyles?.control,
+          disabled ? disabledStyles?.control : '',
           className
         )}
       />

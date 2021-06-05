@@ -19,7 +19,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      borderColor: ['checked', 'disabled'],
+      borderColor: ['checked', 'disabled', 'checked-sibling'],
       backgroundColor: ['checked', 'disabled', 'checked-sibling'],
       cursor: ['disabled'],
       ringColor: ['checked'],

@@ -5,7 +5,7 @@ import { useTheme } from '../theme-provider'
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
-    { className, inputSize = 'md', state = 'default', disabled, ...props },
+    { className, inputSize = 'md', state = 'normal', disabled, ...props },
     ref
   ) => {
     const theme = useTheme()
@@ -19,8 +19,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={clsx(
           'align-middle border focus:outline-none focus:ring-4 transition-colors',
           sizeStyles,
-          stateStyles,
-          disabled ? disabledStyles : '',
+          stateStyles?.control,
+          disabled ? disabledStyles?.control : '',
           className
         )}
       />

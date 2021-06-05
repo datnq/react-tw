@@ -43,38 +43,27 @@ const Inputs = () => {
         </div>
       </Section>
       <Section title='Checkbox'>
-        <div className='space-y-4 flex flex-col'>
-          <Checkbox>Check this</Checkbox>
-          <Checkbox defaultChecked={true}>And this</Checkbox>
-          <Checkbox disabled>&hellip; but not this</Checkbox>
-          <Checkbox disabled defaultChecked={true}>
-            &hellip; nor this
-          </Checkbox>
+        <div className='space-x-4 flex'>
+          <Checkbox />
+          <Checkbox defaultChecked={true} />
+          <Checkbox disabled />
+          <Checkbox disabled defaultChecked={true} />
         </div>
       </Section>
       <Section title='Radio button'>
-        <div className='space-y-4 flex flex-col'>
-          <div className='flex space-x-4'>
-            <Radio name='radio'>Check this</Radio>
-            <Radio name='radio' defaultChecked={true}>
-              And this
-            </Radio>
-          </div>
-          <div className='flex space-x-4'>
-            <Radio name='radio-disabled' disabled>
-              &hellip; but not this
-            </Radio>
-            <Radio name='radio-disabled' disabled defaultChecked={true}>
-              &hellip; nor this
-            </Radio>
-          </div>
+        <div className='space-x-4 flex'>
+          <Radio name='radio' />
+          <Radio name='radio' defaultChecked={true} />
+          <Radio name='radio-disabled' disabled />
+          <Radio name='radio-disabled' disabled defaultChecked={true} />
         </div>
       </Section>
       <Section title='Radio button'>
-        <div className='space-y-6 flex flex-col'>
+        <div className='space-x-4 flex'>
           <Switch />
           <Switch defaultChecked={true} />
-          <Switch defaultChecked={true}>With label</Switch>
+          <Switch disabled />
+          <Switch disabled defaultChecked={true} />
         </div>
       </Section>
     </>

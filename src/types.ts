@@ -7,26 +7,35 @@ export interface ThemeProps {
     size: DefaultButtonSizes & { [x: string]: ClassNames }
   }
   input: {
-    state: DefaultInputStates & { [x: string]: ClassNames }
+    state: DefaultInputStates & { [x: string]: ControlElement }
     size: DefaultControlSizes & { [x: string]: ClassNames }
   }
   checkbox: {
-    state: DefaultCheckboxStates & { [x: string]: ClassNames }
+    state: DefaultCheckboxStates & { [x: string]: ControlElement }
     size: DefaultControlSizes & { [x: string]: ClassNames }
   }
   radio: {
-    state: DefaultCheckboxStates & { [x: string]: ClassNames }
+    state: DefaultCheckboxStates & { [x: string]: ControlElement }
+    size: DefaultControlSizes & { [x: string]: ClassNames }
+  }
+  switch: {
+    state: DefaultCheckboxStates & { [x: string]: ControlElement }
     size: DefaultControlSizes & { [x: string]: ClassNames }
   }
 }
 
 type ClassNames = string | string[]
 
+export interface ControlElement {
+  control: ClassNames
+  indicator?: ClassNames
+}
+
 export interface DefaultControlState {
-  normal: ClassNames
-  disabled: ClassNames
-  valid: ClassNames
-  invalid: ClassNames
+  normal: ControlElement
+  disabled: ControlElement
+  valid?: ControlElement
+  invalid?: ControlElement
 }
 
 export interface DefaultCheckboxStates extends DefaultControlState {}
@@ -105,4 +114,7 @@ export interface TextareaProps extends ComponentPropsWithoutRef<'textarea'> {
 export interface CheckboxProps extends ComponentPropsWithoutRef<'input'> {
   state?: 'normal' | 'valid' | 'invalid'
   inputSize?: 'sm' | 'md' | 'lg'
+  className?: string
+  indicatorClassName?: string
+  controlClassName?: string
 }
