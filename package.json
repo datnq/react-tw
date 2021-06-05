@@ -5,6 +5,7 @@
   "author": "datnq",
   "license": "MIT",
   "repository": "datnq/react-tw",
+  "homepage": "http://datnq.github.io/react-tw/",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.ts",

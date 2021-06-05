@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from '@datnq/react-tw'
 import Layout from './components/Layout'
 import routes from './routes'
@@ -7,7 +7,7 @@ import routes from './routes'
 const App = () => {
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Layout>
           <Switch>
             {Object.keys(routes).map((key) => {
