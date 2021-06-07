@@ -5,6 +5,7 @@ export * from './components/input'
 export * from './components/modal'
 export * from './components/provider'
 export * from './components/selector'
+export * from './components/toaster'
 
 export * from './hooks'
 export * from './theme'

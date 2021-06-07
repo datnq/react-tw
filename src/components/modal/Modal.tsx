@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
+import clsx from 'clsx'
 import React, {
   Fragment,
   ReactElement,
@@ -6,17 +7,27 @@ import React, {
   PropsWithChildren,
   useEffect
 } from 'react'
-import CloseButton from './CloseButton'
+import { CloseButton } from '../button'
 import ModalContent from './ModalContent'
 import ModalFooter from './ModalFooter'
 import ModalTitle from './ModalTitle'
 import { ModalProps } from './types'
 
+const sizes = {
+  full: 'max-w-full',
+  xl: 'max-w-xl',
+  lg: 'max-w-lg',
+  md: 'max-w-md',
+  sm: 'max-w-sm',
+  xs: 'max-w-xs'
+}
+
 const Modal = ({
   open = false,
   title,
   children,
-  onClose
+  onClose,
+  size = 'md'
 }: PropsWithChildren<ModalProps>): ReactElement => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -63,8 +74,13 @@ const Modal = ({
             leaveFrom='opacity-100 scale-100'
             leaveTo='opacity-0 scale-95'
           >
-            <div className='inline-block w-full max-w-md p-8 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-xl'>
-              <CloseButton onClose={close} />
+            <div
+              className={clsx(
+                'inline-block w-full px-8 py-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-xl',
+                sizes[size]
+              )}
+            >
+              <CloseButton onClose={close} className='absolute top-4 right-4' />
               {title && <ModalTitle>{title}</ModalTitle>}
               {typeof children === 'function' ? children(close) : children}
             </div>

@@ -15,8 +15,11 @@ const Modals = () => {
   const { alert, confirm } = useDialog()
   const [dialogResult, setDialogResult] = useState<boolean | undefined>()
 
-  const openAlert = async () => {
-    const result = await alert('This is an alert message')
+  const openAlert = async (variant?: string) => {
+    const result = await alert(
+      'Little Widgets contains 24 thoughtful, professionally designed HTML5/CSS3 website popups and widgets.',
+      { title: 'Attention!', variant }
+    )
     setDialogResult(result)
   }
 
@@ -76,7 +79,7 @@ const Modals = () => {
       </Section>
       <Section title='Dialog'>
         <div className='space-x-4 flex items-center'>
-          <Button variant='danger' onClick={openAlert}>
+          <Button variant='danger' onClick={() => openAlert()}>
             Alert
           </Button>
           <Button variant='primary' onClick={openConfirm}>
@@ -85,6 +88,25 @@ const Modals = () => {
           {typeof dialogResult !== 'undefined' && (
             <span>You clicked: {dialogResult ? 'OK' : 'Cancel'}</span>
           )}
+        </div>
+      </Section>
+      <Section title='Dialog variants'>
+        <div className='space-x-4 flex items-center'>
+          <Button onClick={() => openAlert('warn')}>
+            Warning
+          </Button>
+          <Button onClick={() => openAlert('info')}>
+            Info
+          </Button>
+          <Button onClick={() => openAlert('danger')}>
+            Danger
+          </Button>
+          <Button onClick={() => openAlert('error')}>
+            Error
+          </Button>
+          <Button onClick={() => openAlert('success')}>
+            Success
+          </Button>
         </div>
       </Section>
     </>

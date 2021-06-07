@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { useTheme } from '../provider'
+import { useTheme } from '../../hooks'
 import { CheckboxProps } from './types'
 
 const Radio = forwardRef<HTMLInputElement, CheckboxProps>(

@@ -28,7 +28,7 @@ const Selectors = () => {
             options={options}
             value={select}
             onChange={setSelect}
-            containerClassName='w-1/3'
+            containerClassName='w-full max-w-xs'
           />
         </div>
       </Section>
@@ -38,7 +38,7 @@ const Selectors = () => {
             onChange={setSelectDate}
             placeholder='Pick a date'
             value={selectDate}
-            containerClassName='w-1/3'
+            containerClassName='w-full max-w-xs'
             format={{
               weekday: 'short',
               day: 'numeric',

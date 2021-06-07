@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { useTheme } from '../provider'
+import { useTheme } from '../../hooks'
 import { TextareaProps } from './types'
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -25,7 +25,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
           ref={ref}
           className={clsx(
-            'align-middle border focus:outline-none focus:ring-4 transition-colors',
+            'align-middle border focus:outline-none focus:ring-4 transition-shadow rounded',
             sizeStyles,
             stateStyles?.control,
             disabled ? disabledStyles?.control : '',

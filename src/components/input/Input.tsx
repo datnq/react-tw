@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { useTheme } from '../provider'
+import { useTheme } from '../../hooks'
 import { InputProps } from './types'
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -26,7 +26,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled}
           className={clsx(
-            'align-middle border focus:outline-none focus:ring-4 transition-colors w-full',
+            'align-middle border focus:outline-none focus:ring-4 transition-shadow w-full rounded',
             sizeStyles,
             stateStyles?.control,
             disabled ? disabledStyles?.control : '',

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { useTheme } from '../provider'
+import { useTheme } from '../../hooks'
 import { CheckboxProps } from './types'
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -30,7 +30,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
           disabled={disabled}
           className={clsx(
-            'appearance-none outline-none cursor-pointer transition-colors',
+            'appearance-none outline-none cursor-pointer transition-all',
             'h-4 w-4 border-2 rounded inline-block checked:ring-2',
             stateStyles?.control,
             controlClassName

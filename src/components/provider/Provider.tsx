@@ -3,8 +3,9 @@ import merge from 'lodash.merge'
 import { defaultTheme } from '../../theme'
 import { ProviderProps } from './types'
 import { TwxContext } from './Context'
-import { Dialog } from '../modal'
-import { DialogProps } from '../modal/types'
+import { DialogProps } from '../dialog/types'
+import { Dialog } from '../dialog'
+import { Toaster } from '../toaster'
 
 export default ({
   theme,
@@ -20,6 +21,7 @@ export default ({
     >
       {children}
       <Dialog {...dialog} />
+      <Toaster />
     </TwxContext.Provider>
   )
 }

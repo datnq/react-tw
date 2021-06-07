@@ -1,5 +1,5 @@
 import { ReactNode, useContext, useRef } from 'react'
-import { DialogActions, DialogProps } from '../components/modal/types'
+import { DialogActions, DialogProps } from '../components/dialog/types'
 import { TwxContext } from '../components/provider/Context'
 
 export const useDialog = (): DialogActions => {
@@ -17,7 +17,9 @@ export const useDialog = (): DialogActions => {
     })
   }
   const hideDialog = (): void => {
-    setDialog && setDialog({ open: false })
+    setTimeout(() => {
+      setDialog && setDialog({ open: false })
+    }, 200)
   }
 
   const handleOk = async (): Promise<void> => {

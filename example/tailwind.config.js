@@ -14,6 +14,54 @@ module.exports = {
       },
       gridTemplateRows: {
         layout: 'minmax(0, 1fr) 60px'
+      },
+      animation: {
+        disappearFromTop: 'disappearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        disappearFromBottom: 'disappearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        appearFromTop: 'appearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        appearFromBottom: 'appearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)'
+      },
+      keyframes: {
+        appearFromTop: {
+          from: {
+            transform: 'translate3d(0, -200, 0) scale(.6)',
+            opacity: 0
+          },
+          to: {
+            transform: 'translate3d(0, 0, -1px) scale(1)',
+            opacity: 1
+          }
+        },
+        appearFromBottom: {
+          from: {
+            transform: 'translate3d(0, 200, 0) scale(.6)',
+            opacity: 0
+          },
+          to: {
+            transform: 'translate3d(0, 0, 0) scale(1)',
+            opacity: 1
+          }
+        },
+        disappearFromTop: {
+          from: {
+            transform: 'translate3d(0, 0, -1px) scale(1)',
+            opacity: 1
+          },
+          to: {
+            transform: 'translate3d(0, -150%, -1px) scale(.6)',
+            opacity: 0
+          }
+        },
+        disappearFromBottom: {
+          from: {
+            transform: 'translate3d(0,0,-1px) scale(1)',
+            opacity: 1
+          },
+          to: {
+            transform: 'translate3d(0, 150%, -1px) scale(.6)',
+            opacity: 0
+          }
+        }
       }
     }
   },

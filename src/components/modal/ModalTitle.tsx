@@ -8,13 +8,7 @@ const ModalTitle = ({
   className
 }: PropsWithChildren<ModalChildProps>): ReactElement => {
   return (
-    <Dialog.Title
-      as='h3'
-      className={clsx(
-        'text-lg font-bold flex space-x-4 items-center',
-        className
-      )}
-    >
+    <Dialog.Title as='h3' className={clsx('text-lg font-bold', className)}>
       {children}
     </Dialog.Title>
   )

@@ -6,6 +6,7 @@ import Inputs from './Inputs'
 import Avatars from './Avatars'
 import Selectors from './Selectors'
 import Modals from './Modals'
+import Toasters from './Toasters'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -43,6 +44,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/modals',
     label: 'Modal',
     component: Modals
+  },
+  toasters: {
+    href: '/toasts',
+    label: 'Toaster',
+    component: Toasters
   }
 }
 

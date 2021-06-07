@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import clsx from 'clsx'
-import { useTheme } from '../provider'
 import { ButtonProps } from './types'
+import { useTheme } from '../../hooks'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -26,8 +26,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={
           variant !== 'custom'
             ? clsx(
-                'inline-flex items-center border shadow-sm transition-colors space-x-2 align-middle',
-                'focus:outline-none focus:ring-4',
+                'inline-flex items-center border shadow-sm transition-all space-x-2 align-middle justify-center',
+                'focus:outline-none focus:ring-4 min-w-max rounded-md',
                 variantStyles,
                 sizeStyles,
                 { 'bg-opacity-50': disabled },

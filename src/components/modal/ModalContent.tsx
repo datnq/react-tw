@@ -7,7 +7,7 @@ const ModalContent = ({
   className
 }: PropsWithChildren<ModalChildProps>): ReactElement => {
   return (
-    <div className={clsx('mt-4 text-gray-500 text-sm', className)}>
+    <div className={clsx('mt-4 text-sm text-gray-600', className)}>
       {children}
     </div>
   )
