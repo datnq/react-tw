@@ -17,8 +17,8 @@ const options: SelectOptionsProps[] = [
 ]
 
 const Selectors = () => {
-  const [select, setSelect] = useState('vi-VN')
-  const [selectDate, setSelectDate] = useState()
+  const [select, setSelect] = useState<string | undefined>('vi-VN')
+  const [selectDate, setSelectDate] = useState<Date>()
   return (
     <>
       <PageHeader title='Selector' subtitle='Select, Datepicker...' />
@@ -28,7 +28,7 @@ const Selectors = () => {
             options={options}
             value={select}
             onChange={setSelect}
-            className='w-1/3'
+            containerClassName='w-1/3'
           />
         </div>
       </Section>
@@ -38,7 +38,7 @@ const Selectors = () => {
             onChange={setSelectDate}
             placeholder='Pick a date'
             value={selectDate}
-            className='w-1/3'
+            containerClassName='w-1/3'
             format={{
               weekday: 'short',
               day: 'numeric',

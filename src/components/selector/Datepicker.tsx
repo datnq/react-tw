@@ -1,39 +1,13 @@
-import React, { Fragment, ReactElement, useMemo } from 'react'
+import React, { ReactElement, useMemo } from 'react'
 import { Listbox } from '@headlessui/react'
+import clsx from 'clsx'
 import { useCalendar, shortDayNames } from '../../hooks'
-import { ListItem, Options } from './Listbox'
+import { ListItem, ListToggle, Options } from './Listbox'
 import { Button } from '../button'
 import { splitToRows } from '../../utils'
 import { DatepickerProps } from './types'
-import clsx from 'clsx'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from '../icons'
-import { useTheme } from '../theme-provider'
-
-interface DateFormats {
-  long: Intl.DateTimeFormatOptions
-  short: Intl.DateTimeFormatOptions
-}
-
-export const dateFormats: DateFormats = {
-  long: {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  },
-  short: {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  }
-}
-
-export const formatDate = (
-  date: Date,
-  locale: string,
-  format: Intl.DateTimeFormatOptions = dateFormats.long
-): string => {
-  return new Intl.DateTimeFormat(locale, format).format(date)
-}
+import { dateFormats, formatDate } from './consts'
 
 const Datepicker = ({
   value,
@@ -42,45 +16,36 @@ const Datepicker = ({
   disabled,
   locale = 'en-US',
   format = dateFormats.short,
-  inputSize = 'md',
-  state = 'normal',
-  className
+  size = 'md',
+  variant = 'default',
+  narrow,
+  className,
+  containerClassName
 }: DatepickerProps): ReactElement => {
   const calendar = useCalendar(value || new Date())
   const weeks = useMemo(() => splitToRows(calendar.items, 7), [calendar])
 
-  const theme = useTheme()
-  const sizeStyles = theme?.input.size[inputSize]
-  const stateStyles = theme?.input.state[state]
-  const disabledStyles = theme?.input.state.disabled
+  const change = (value: Date | undefined): void => {
+    onChange && onChange(value)
+  }
 
   return (
     <Listbox
       as='div'
       value={value}
-      onChange={onChange}
+      onChange={change}
       disabled={disabled}
-      className={clsx('relative inline-flex align-middle', className)}
+      className={clsx('relative inline-flex align-middle', containerClassName)}
     >
-      <Listbox.Button as={Fragment}>
-        <Button
-          className={clsx(
-            '!pr-2 w-full text-left',
-            sizeStyles,
-            stateStyles,
-            disabled ? disabledStyles : ''
-          )}
-        >
-          <span
-            className={clsx('block flex-grow', {
-              'text-gray-400': !value
-            })}
-          >
-            {value ? formatDate(value, locale, format) : placeholder}
-          </span>
-          <CalendarIcon className='h-4 w-4' />
-        </Button>
-      </Listbox.Button>
+      <ListToggle
+        size={size}
+        variant={variant}
+        narrow={narrow}
+        icon={<CalendarIcon className='w-4 h-4' />}
+        label={value ? formatDate(value, locale, format) : ''}
+        placeholder={placeholder}
+        className={className}
+      />
       <Options className='p-2 min-w-min'>
         <table className='border-collapse'>
           <thead>

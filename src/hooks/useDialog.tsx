@@ -1,104 +1,55 @@
-import clsx from 'clsx'
-import React, { ReactNode, useRef } from 'react'
-import { Button } from '../components/button'
-import { ModalState } from '../components/theme-provider/types'
-import { useModal } from './useModal'
-
-export interface ModalOptions extends Partial<ModalState> {
-  [x: string]: unknown
-}
-
-interface AwaitingRef {
-  resolve: (value: unknown) => void
-}
-
-interface DialogOpts extends ModalOptions {
-  okLabel?: string
-  okClassName?: string
-  cancelLabel?: string
-  cancelClassName?: string
-}
-
-type DialogAction = (
-  message: ReactNode | string,
-  options?: DialogOpts
-) => Promise<void>
-
-interface DialogActions {
-  confirm: DialogAction
-  alert: DialogAction
-}
+import { ReactNode, useContext, useRef } from 'react'
+import { DialogActions, DialogProps } from '../components/modal/types'
+import { TwxContext } from '../components/provider/Context'
 
 export const useDialog = (): DialogActions => {
-  const modal = useModal()
+  const ctx = useContext(TwxContext)
+  const dialog = ctx?.dialog
+  const setDialog = ctx?.setDialog
 
-  const awaitingRef = useRef<AwaitingRef>()
+  const awaitingRef =
+    useRef<{ resolve: (value: boolean | PromiseLike<boolean>) => void }>()
 
-  const dialog = (data: Partial<ModalState>): Promise<void> => {
-    modal.show(data)
+  const showDialog = (props: Partial<DialogProps>): Promise<boolean> => {
+    setDialog && setDialog({ ...dialog, ...props, open: true })
     return new Promise((resolve) => {
       awaitingRef.current = { resolve }
     })
   }
+  const hideDialog = (): void => {
+    setDialog && setDialog({ open: false })
+  }
 
-  const handleOk = (close: () => void) => async (): Promise<void> => {
+  const handleOk = async (): Promise<void> => {
     awaitingRef.current && (await awaitingRef.current.resolve(true))
-    close()
+    hideDialog()
   }
-  const handleCancel = (close: () => void) => async (): Promise<void> => {
+  const handleCancel = async (): Promise<void> => {
     awaitingRef.current && (await awaitingRef.current.resolve(false))
-    close()
+    hideDialog()
   }
 
-  const alert: DialogAction = (message, options?) => {
-    const { okLabel = 'OK', okClassName, ...opts } = options || {}
-
-    return dialog({
-      ...opts,
-      content: message,
-      footer: (close, focusRef) => (
-        <Button
-          variant='primary'
-          className={clsx(okClassName)}
-          onClick={handleOk(close)}
-          ref={focusRef}
-        >
-          {okLabel}
-        </Button>
-      )
+  const alert = (
+    message: ReactNode,
+    options: DialogProps = {}
+  ): Promise<boolean> => {
+    return showDialog({
+      ...options,
+      message,
+      onOK: handleOk
     })
   }
 
-  const confirm: DialogAction = (message, options?) => {
-    const {
-      okLabel = 'OK',
-      cancelLabel = 'Cancel',
-      okClassName,
-      cancelClassName,
-      ...opts
-    } = options || {}
-
-    return dialog({
-      ...opts,
-      content: message,
-      footer: (close, focusRef) => (
-        <div className='flex justify-center'>
-          <Button
-            className={clsx(cancelClassName)}
-            onClick={handleCancel(close)}
-          >
-            {cancelLabel}
-          </Button>
-          <Button
-            variant='primary'
-            className={clsx(okClassName)}
-            onClick={handleOk(close)}
-            ref={focusRef}
-          >
-            {okLabel}
-          </Button>
-        </div>
-      )
+  const confirm = (
+    message: ReactNode,
+    options: DialogProps = {}
+  ): Promise<boolean> => {
+    return showDialog({
+      ...options,
+      message,
+      onOK: handleOk,
+      onCancel: handleCancel,
+      showCancel: true
     })
   }
 

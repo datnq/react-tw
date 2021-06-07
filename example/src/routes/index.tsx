@@ -5,6 +5,7 @@ import Dropdowns from './Dropdowns'
 import Inputs from './Inputs'
 import Avatars from './Avatars'
 import Selectors from './Selectors'
+import Modals from './Modals'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -37,6 +38,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/dropdown',
     label: 'Dropdown',
     component: Dropdowns
+  },
+  modals: {
+    href: '/modals',
+    label: 'Modal',
+    component: Modals
   }
 }
 

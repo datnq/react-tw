@@ -28,6 +28,8 @@ module.exports = {
       ringOpacity: ['checked'],
       ringWidth: ['checked'],
       opacity: ['checked-sibling'],
+      padding: ['important'],
+      textColor: ['important'],
       transform: ['checked-sibling'],
       translate: ['checked-sibling'],
       filter: ['disabled']

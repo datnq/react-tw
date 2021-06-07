@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import clsx from 'clsx'
-import { useTheme } from '../theme-provider'
-import { ButtonProps } from '../../types'
+import { useTheme } from '../provider'
+import { ButtonProps } from './types'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -16,22 +16,25 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const theme = useTheme()
-    const variantStyles = theme?.button.variant[variant]
-    const sizeStyles = theme?.button.size[narrow ? 'narrow-' + size : size]
+    const theme = useTheme('button')
+    const variantStyles = theme?.variant[variant]
+    const sizeStyles = theme?.size[narrow ? 'narrow-' + size : size]
+
     return (
       <button
         type={type}
-        className={clsx(
-          'inline-flex items-center border shadow-sm transition-colors space-x-2 align-middle',
-          'focus:outline-none focus:ring-4',
-          variantStyles,
-          sizeStyles,
-          {
-            'bg-opacity-50': disabled
-          },
-          className
-        )}
+        className={
+          variant !== 'custom'
+            ? clsx(
+                'inline-flex items-center border shadow-sm transition-colors space-x-2 align-middle',
+                'focus:outline-none focus:ring-4',
+                variantStyles,
+                sizeStyles,
+                { 'bg-opacity-50': disabled },
+                className
+              )
+            : className
+        }
         ref={ref}
         {...rest}
       />

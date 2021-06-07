@@ -1,15 +1,40 @@
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, {
-  ComponentPropsWithoutRef,
   forwardRef,
   Fragment,
   PropsWithChildren,
   ReactElement
 } from 'react'
+import { Button } from '../button'
+import { ListboxOptionsProps, ListItemProps, ListboxToggleProps } from './types'
 
-interface ListboxOptionsProps {
-  className?: string
+export const ListToggle = ({
+  className,
+  icon,
+  label,
+  placeholder,
+  size = 'md',
+  variant = 'default'
+}: ListboxToggleProps): ReactElement => {
+  return (
+    <Listbox.Button as={Fragment}>
+      <Button
+        size={size}
+        variant={variant}
+        className={clsx('!pr-2 w-full', className)}
+      >
+        <span
+          className={clsx('block flex-grow text-left min-w-max', {
+            'text-gray-400': !label
+          })}
+        >
+          {label || placeholder || ''}
+        </span>
+        {icon}
+      </Button>
+    </Listbox.Button>
+  )
 }
 
 export const Options = ({
@@ -20,11 +45,11 @@ export const Options = ({
     <Transition
       as={Fragment}
       enter='transition ease-out duration-100'
-      enterFrom='transform opacity-0'
-      enterTo='transform opacity-100'
-      leave='transition ease-in duration-75'
-      leaveFrom='transform opacity-100'
-      leaveTo='transform opacity-0'
+      enterFrom='opacity-0'
+      enterTo='opacity-100'
+      leave='transition ease-in duration-100'
+      leaveFrom='opacity-100'
+      leaveTo='opacity-0'
     >
       <Listbox.Options
         className={clsx(
@@ -38,10 +63,6 @@ export const Options = ({
       </Listbox.Options>
     </Transition>
   )
-}
-
-interface ListItemProps extends ComponentPropsWithoutRef<'div'> {
-  selected?: boolean
 }
 
 export const ListItem = forwardRef<HTMLDivElement, ListItemProps>(

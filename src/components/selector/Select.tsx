@@ -1,10 +1,8 @@
-import React, { Fragment, ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
-import { Button } from '../button'
-import { ListItem, Options } from './Listbox'
+import { ListItem, ListToggle, Options } from './Listbox'
 import { ChevronDownIcon } from '../icons'
-import { useTheme } from '../theme-provider'
 import { SelectProps } from './types'
 
 const Select = ({
@@ -12,45 +10,36 @@ const Select = ({
   onChange,
   options,
   className,
+  containerClassName,
   placeholder = 'Please select...',
-  state = 'normal',
-  inputSize = 'md',
+  size = 'md',
+  variant = 'default',
+  narrow,
   disabled
 }: SelectProps): ReactElement => {
   const selectedOption = options.find((o) => o.value === value)
 
-  const theme = useTheme()
-  const sizeStyles = theme?.input.size[inputSize]
-  const stateStyles = theme?.input.state[state]
-  const disabledStyles = theme?.input.state.disabled
+  const change = (value: string | undefined): void => {
+    onChange && onChange(value)
+  }
 
   return (
     <Listbox
       as='div'
       value={value}
-      onChange={onChange}
+      onChange={change}
       disabled={disabled}
-      className={clsx('relative inline-flex align-middle', className)}
+      className={clsx('relative inline-flex align-middle', containerClassName)}
     >
-      <Listbox.Button as={Fragment}>
-        <Button
-          className={clsx(
-            '!pr-2 w-full text-left',
-            sizeStyles,
-            stateStyles,
-            disabled ? disabledStyles : ''
-          )}
-        >
-          <span
-            className={clsx('block flex-grow', {
-              'text-gray-400': !value
-            })}
-          >
-            {selectedOption ? selectedOption.text : placeholder}
-          </span>
-          <ChevronDownIcon className='w-4 h-4' />
-        </Button>
-      </Listbox.Button>
+      <ListToggle
+        size={size}
+        variant={variant}
+        narrow={narrow}
+        icon={<ChevronDownIcon className='w-4 h-4' />}
+        label={selectedOption ? selectedOption.text : ''}
+        placeholder={placeholder}
+        className={className}
+      />
       <Options className='min-w-min w-full'>
         <div className='p-1 space-y-1'>
           {options.map((option) => (

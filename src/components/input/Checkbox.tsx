@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { CheckboxProps } from '../../types'
-import { useTheme } from '../theme-provider'
+import { useTheme } from '../provider'
+import { CheckboxProps } from './types'
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
@@ -15,8 +15,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    const theme = useTheme()
-    const stateStyles = theme?.checkbox.state[disabled ? 'disabled' : state]
+    const theme = useTheme('checkbox')
+    const stateStyles = theme?.state[disabled ? 'disabled' : state]
     return (
       <label
         className={clsx(
