@@ -1,5 +1,5 @@
 import { ReactNode, useContext, useRef } from 'react'
-import { DialogActions, DialogProps } from '../components/dialog/types'
+import { DialogActions, DialogProps } from '../components/dialog'
 import { TwxContext } from '../components/provider/Context'
 
 export const useDialog = (): DialogActions => {

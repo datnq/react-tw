@@ -1,6 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, {
+  FC,
   forwardRef,
   Fragment,
   PropsWithChildren,
@@ -9,14 +10,14 @@ import React, {
 import { Button } from '../button'
 import { ListboxOptionsProps, ListItemProps, ListboxToggleProps } from './types'
 
-export const ListToggle = ({
+export const ListToggle: FC<ListboxToggleProps> = ({
   className,
   icon,
   label,
   placeholder,
   size = 'md',
   variant = 'default'
-}: ListboxToggleProps): ReactElement => {
+}) => {
   return (
     <Listbox.Button as={Fragment}>
       <Button

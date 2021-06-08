@@ -1,14 +1,11 @@
 import clsx from 'clsx'
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { AlertIcon, ErrorIcon, InfoIcon, SuccessIcon } from '../icons'
 import { DialogIconProps } from './types'
 
 const defaultClassName = 'w-16 h-16 mx-auto mb-4'
 
-const DialogIcon = ({
-  variant = 'info',
-  className
-}: DialogIconProps): ReactElement | null => {
+const DialogIcon: FC<DialogIconProps> = ({ variant = 'info', className }) => {
   switch (variant) {
     case 'info':
       return (

@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from 'react'
+import React, { FC, ReactElement, useMemo } from 'react'
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { useCalendar, shortDayNames } from '../../hooks'
@@ -9,7 +9,7 @@ import { DatepickerProps } from './types'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from '../icons'
 import { dateFormats, formatDate } from './consts'
 
-const Datepicker = ({
+const Datepicker: FC<DatepickerProps> = ({
   value,
   placeholder,
   onChange,
@@ -21,7 +21,7 @@ const Datepicker = ({
   narrow,
   className,
   containerClassName
-}: DatepickerProps): ReactElement => {
+}) => {
   const calendar = useCalendar(value || new Date())
   const weeks = useMemo(() => splitToRows(calendar.items, 7), [calendar])
 

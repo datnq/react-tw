@@ -1,10 +1,10 @@
-import React, { Fragment, ReactElement, ReactNode } from 'react'
+import React, { FC, Fragment, ReactNode } from 'react'
 import { Button } from '../button'
 import { Modal, ModalContent, ModalFooter, ModalTitle } from '../modal'
 import DialogIcon from './DialogIcon'
 import { DialogProps } from './types'
 
-const Dialog = ({
+const Dialog: FC<DialogProps> = ({
   message,
   okButton,
   okButtonProps = { variant: 'primary' },
@@ -16,7 +16,7 @@ const Dialog = ({
   title,
   variant,
   ...modalProps
-}: DialogProps): ReactElement => {
+}) => {
   const cancel = (): void => {
     onCancel && onCancel()
   }

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { ThemeProps } from '../../theme/types'
-import { DialogProps } from '../modal/types'
+import { DialogProps } from '../dialog'
 
 export interface TwxContextProps {
   theme: ThemeProps

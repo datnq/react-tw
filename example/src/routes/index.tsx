@@ -7,6 +7,7 @@ import Avatars from './Avatars'
 import Selectors from './Selectors'
 import Modals from './Modals'
 import Toasters from './Toasters'
+import Tables from './Table'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -39,6 +40,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/dropdown',
     label: 'Dropdown',
     component: Dropdowns
+  },
+  table: {
+    href: '/table',
+    label: 'Table',
+    component: Tables
   },
   modals: {
     href: '/modals',

@@ -1,17 +1,17 @@
 import { Menu } from '@headlessui/react'
 import clsx from 'clsx'
-import React, { PropsWithChildren, ReactElement } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { DropdownItemProps, DropdownProps } from './types'
 import DropdownToggle from './DropdownToggle'
 import DropdownMenu from './DropdownMenu'
 
-const Dropdown = ({
+const Dropdown: FC<DropdownProps> = ({
   className,
   children,
   items,
   renderItem,
   onItemClick
-}: PropsWithChildren<DropdownProps>): ReactElement => {
+}) => {
   const itemClick = (
     value: unknown,
     active: boolean,
@@ -58,9 +58,6 @@ const Dropdown = ({
     </Menu>
   )
 }
-
-Dropdown.Toggle = DropdownToggle
-Dropdown.Menu = DropdownMenu
 
 export { DropdownToggle, DropdownMenu }
 

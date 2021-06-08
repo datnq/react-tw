@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { PropsWithChildren, ReactElement } from 'react'
+import React, { FC } from 'react'
 import { getInitials } from '../../utils'
 
 export interface AvatarProps {
@@ -8,12 +8,7 @@ export interface AvatarProps {
   className?: ''
 }
 
-const Avatar = ({
-  picture,
-  name,
-  className,
-  children
-}: PropsWithChildren<AvatarProps>): ReactElement => {
+const Avatar: FC<AvatarProps> = ({ picture, name, className, children }) => {
   return (
     <span
       className={clsx(

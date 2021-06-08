@@ -1,13 +1,10 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { DotsHorizontalOutline } from '@graywolfai/react-heroicons'
 import Flag from 'react-world-flags'
-import { Dropdown, Button } from '@datnq/react-tw'
+import { Dropdown, Button, DropdownToggle, DropdownMenu } from '@datnq/react-tw'
 import PageHeader from '../components/PageHeader'
 import Section from '../components/Section'
-import {
-  DropdownItemProps,
-  DropdownItemRenderProps
-} from '@datnq/react-tw/dist/types'
+import { DropdownItemProps, DropdownItemRenderProps } from '@datnq/react-tw'
 import clsx from 'clsx'
 
 const items: DropdownItemProps[] = [
@@ -83,11 +80,11 @@ const Drowndowns = () => {
       <Section title='With items list'>
         <div className='space-x-4'>
           <Dropdown items={items} onItemClick={setItemClicked}>
-            <Dropdown.Toggle>
+            <DropdownToggle>
               <Button narrow>
                 <DotsHorizontalOutline className='w-5 h-5' />
               </Button>
-            </Dropdown.Toggle>
+            </DropdownToggle>
           </Dropdown>
           {itemClicked ? (
             <span className='text-sm'>
@@ -105,9 +102,9 @@ const Drowndowns = () => {
             onItemClick={setItemClicked2}
             renderItem={renderItem}
           >
-            <Dropdown.Toggle>
+            <DropdownToggle>
               <Button>Where do you come from?</Button>
-            </Dropdown.Toggle>
+            </DropdownToggle>
           </Dropdown>
           {itemClicked2 ? (
             <span className='text-sm'>
@@ -121,24 +118,24 @@ const Drowndowns = () => {
       <Section title='With custom dropdown menu &amp; positions'>
         <div className='space-x-2'>
           <Dropdown>
-            <Dropdown.Toggle>
+            <DropdownToggle>
               <Button variant='primary'>Position Left</Button>
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
+            </DropdownToggle>
+            <DropdownMenu>
               <div className='p-4 h-40 text-center items-center flex'>
                 <p>Dropdown menu can be any component</p>
               </div>
-            </Dropdown.Menu>
+            </DropdownMenu>
           </Dropdown>
           <Dropdown>
-            <Dropdown.Toggle>
+            <DropdownToggle>
               <Button variant='primary'>Position Right</Button>
-            </Dropdown.Toggle>
-            <Dropdown.Menu position='right'>
+            </DropdownToggle>
+            <DropdownMenu position='right'>
               <div className='p-4 h-40 text-center items-center flex'>
                 <p>Dropdown menu can be any component</p>
               </div>
-            </Dropdown.Menu>
+            </DropdownMenu>
           </Dropdown>
         </div>
       </Section>

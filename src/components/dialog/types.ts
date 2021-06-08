@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { ButtonProps } from '../button/types'
-import { ModalProps } from '../modal/types'
+import { ButtonProps } from '../button'
+import { ModalProps } from '../modal'
 
 export interface DialogProps extends ModalProps {
   message?: ReactNode

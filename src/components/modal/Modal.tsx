@@ -1,15 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import React, {
-  Fragment,
-  ReactElement,
-  useState,
-  PropsWithChildren,
-  useEffect
-} from 'react'
+import React, { Fragment, useState, useEffect, FC } from 'react'
 import { CloseButton } from '../button'
-import ModalContent from './ModalContent'
-import ModalFooter from './ModalFooter'
 import ModalTitle from './ModalTitle'
 import { ModalProps } from './types'
 
@@ -22,13 +14,13 @@ const sizes = {
   xs: 'max-w-xs'
 }
 
-const Modal = ({
+const Modal: FC<ModalProps> = ({
   open = false,
   title,
   children,
   onClose,
   size = 'md'
-}: PropsWithChildren<ModalProps>): ReactElement => {
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   useEffect(() => {
@@ -90,9 +82,5 @@ const Modal = ({
     </Transition>
   )
 }
-
-Modal.Title = ModalTitle
-Modal.Content = ModalContent
-Modal.Footer = ModalFooter
 
 export default Modal

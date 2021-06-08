@@ -1,11 +1,11 @@
-import React, { ReactElement } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { ListItem, ListToggle, Options } from './Listbox'
 import { ChevronDownIcon } from '../icons'
 import { SelectProps } from './types'
 
-const Select = ({
+const Select: FC<SelectProps> = ({
   value,
   onChange,
   options,
@@ -16,7 +16,7 @@ const Select = ({
   variant = 'default',
   narrow,
   disabled
-}: SelectProps): ReactElement => {
+}) => {
   const selectedOption = options.find((o) => o.value === value)
 
   const change = (value: string | undefined): void => {

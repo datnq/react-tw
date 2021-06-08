@@ -1,13 +1,13 @@
 import { Menu, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import React, { Fragment, PropsWithChildren, ReactElement } from 'react'
+import React, { FC, Fragment } from 'react'
 import { DropdownMenuProps } from './types'
 
-const DropdownMenu = ({
+const DropdownMenu: FC<DropdownMenuProps> = ({
   className,
   children,
   position = 'left'
-}: PropsWithChildren<DropdownMenuProps>): ReactElement => {
+}) => {
   return (
     <Transition
       as={Fragment}

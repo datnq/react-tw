@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react'
-import { ButtonProps } from '../button/types'
+import { ButtonProps } from '../button'
 
 export interface DateFormats {
   long: Intl.DateTimeFormatOptions

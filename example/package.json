@@ -29,6 +29,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "link:../node_modules/react-scripts",
     "react-world-flags": "^1.4.0",
+    "swr": "^0.5.6",
     "typescript": "link:../node_modules/typescript"
   },
   "devDependencies": {
