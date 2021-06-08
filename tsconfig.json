@@ -18,6 +18,6 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": false
   },
-  "include": ["src", "src/plugin.ts"],
+  "include": ["src", "src/plugins"],
   "exclude": ["node_modules", "dist", "example"]
 }

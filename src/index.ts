@@ -1,3 +1,6 @@
+import { checkedSibling } from './plugins/checked-sibling'
+import { important } from './plugins/important'
+
 export * from './components/avatar'
 export * from './components/button'
 export * from './components/dropdown'
@@ -9,4 +12,6 @@ export * from './components/toaster'
 
 export * from './hooks'
 export * from './theme'
-export { default as plugin } from './plugin'
+
+const plugins = { checkedSibling, important }
+export { plugins }

@@ -11,6 +11,7 @@ const Switch = forwardRef<HTMLInputElement, CheckboxProps>(
       controlClassName,
       indicatorClassName,
       disabled,
+      placeholder,
       ...props
     },
     ref
@@ -20,33 +21,36 @@ const Switch = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <label
         className={clsx(
-          'inline-flex relative align-middle',
+          'inline-flex relative align-middle items-center text-sm space-x-2',
           { 'pointer-events-none': disabled, 'cursor-pointer': !disabled },
           className
         )}
       >
-        <input
-          type='checkbox'
-          {...props}
-          ref={ref}
-          className='hidden'
-          disabled={disabled}
-        />
-        <span
-          className={clsx(
-            'block w-9 h-4 rounded-full shadow-inner transition-colors',
-            stateStyles?.control,
-            controlClassName
-          )}
-        />
-        <span
-          className={clsx(
-            'block absolute w-6 h-6 rounded-full shadow -left-2 -top-1 transition-transform',
-            'checked-sibling:transform checked-sibling:translate-x-full',
-            stateStyles?.indicator,
-            indicatorClassName
-          )}
-        />
+        <span className='relative align-middle inline-flex flex-shrink-0'>
+          <input
+            type='checkbox'
+            {...props}
+            ref={ref}
+            className='hidden'
+            disabled={disabled}
+          />
+          <span
+            className={clsx(
+              'block w-8 h-4 rounded-full shadow-inner transition-colors',
+              stateStyles?.control,
+              controlClassName
+            )}
+          />
+          <span
+            className={clsx(
+              'block absolute w-4 h-4 rounded-full shadow left-px top-px transition-transform',
+              'checked-sibling:transform checked-sibling:translate-x-full',
+              stateStyles?.indicator,
+              indicatorClassName
+            )}
+          />
+        </span>
+        {placeholder && <span>{placeholder}</span>}
       </label>
     )
   }

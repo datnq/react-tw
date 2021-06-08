@@ -117,11 +117,15 @@ export const defaultTheme: ThemeProps = {
   switch: {
     state: {
       normal: {
-        control: 'bg-gray-200 checked-sibling:bg-indigo-500',
+        control: [
+          'bg-gray-200 border border-gray-200 box-content',
+          'checked-sibling:bg-indigo-500 checked-sibling:border checked-sibling:border-indigo-500',
+          'checked-sibling:ring-2 checked-sibling:ring-indigo-500 checked-sibling:ring-opacity-30'
+        ],
         indicator: 'bg-white'
       },
       disabled: {
-        control: 'bg-gray-200 checked-sibling:bg-gray-400',
+        control: 'bg-gray-200 border checked-sibling:bg-gray-400 box-content',
         indicator: 'bg-white'
       }
     },

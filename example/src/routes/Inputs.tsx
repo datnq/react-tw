@@ -63,7 +63,7 @@ const Inputs = () => {
           <Switch />
           <Switch defaultChecked={true} />
           <Switch disabled />
-          <Switch disabled defaultChecked={true} />
+          <Switch disabled defaultChecked={true} placeholder='Disabled' />
         </div>
       </Section>
     </>

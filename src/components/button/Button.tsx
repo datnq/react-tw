@@ -26,7 +26,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={
           variant !== 'custom'
             ? clsx(
-                'inline-flex items-center border shadow-sm transition-all space-x-2 align-middle justify-center',
+                'inline-flex items-center border shadow-sm transition space-x-2 align-middle justify-center',
                 'focus:outline-none focus:ring-4 min-w-max rounded-md',
                 variantStyles,
                 sizeStyles,

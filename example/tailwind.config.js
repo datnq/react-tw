@@ -1,5 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+const { plugins } = require('@datnq/react-tw')
+
 module.exports = {
   jit: true,
   purge: [],
@@ -16,10 +18,14 @@ module.exports = {
         layout: 'minmax(0, 1fr) 60px'
       },
       animation: {
-        disappearFromTop: 'disappearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
-        disappearFromBottom: 'disappearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)',
-        appearFromTop: 'appearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
-        appearFromBottom: 'appearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)'
+        disappearFromTop:
+          'disappearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        disappearFromBottom:
+          'disappearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        appearFromTop:
+          'appearFromTop 0.4s forwards cubic-bezier(.06,.71,.55,1)',
+        appearFromBottom:
+          'appearFromBottom 0.4s forwards cubic-bezier(.06,.71,.55,1)'
       },
       keyframes: {
         appearFromTop: {
@@ -70,18 +76,17 @@ module.exports = {
       borderColor: ['checked', 'disabled', 'checked-sibling'],
       backgroundColor: ['checked', 'disabled', 'checked-sibling'],
       cursor: ['disabled'],
-      ringColor: ['checked'],
-      ringOffsetColor: ['checked'],
-      ringOffsetWidth: ['checked'],
-      ringOpacity: ['checked'],
-      ringWidth: ['checked'],
       opacity: ['checked-sibling'],
       padding: ['important'],
+      ringColor: ['checked', 'checked-sibling'],
+      ringOffsetColor: ['checked', 'checked-sibling'],
+      ringOffsetWidth: ['checked', 'checked-sibling'],
+      ringOpacity: ['checked', 'checked-sibling'],
+      ringWidth: ['checked', 'checked-sibling'],
       textColor: ['important'],
       transform: ['checked-sibling'],
-      translate: ['checked-sibling'],
-      filter: ['disabled']
+      translate: ['checked-sibling']
     }
   },
-  plugins: [require('@datnq/react-tw').plugin]
+  plugins: [plugins.checkedSibling, plugins.important]
 }
