@@ -10,6 +10,8 @@ export * from './components/modal'
 export * from './components/provider'
 export * from './components/selector'
 export * from './components/table'
+export * from './components/table-plugins/selection'
+export * from './components/table-plugins/sortable'
 export * from './components/toaster'
 
 export * from './hooks'

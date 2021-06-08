@@ -1,6 +1,6 @@
 import get from 'lodash.get'
 import React, { FC } from 'react'
-import useTable from '../../hooks/useTable'
+import { useTable } from '../../hooks'
 import Cell from './Cell'
 import { RowProps } from './types'
 import { getCellKey } from './utils'
@@ -18,7 +18,12 @@ const Row: FC<RowProps> = ({ rowData, index }) => {
       }}
     >
       {typeof renderRow === 'function'
-        ? renderRow({ rowData, rowIndex: index, columns, onRowClick })
+        ? renderRow({
+            rowData,
+            rowIndex: index,
+            columns,
+            onRowClick
+          })
         : columns.map((column) => {
             const rowId = get(rowData, rowKey)
             return (

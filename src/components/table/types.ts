@@ -1,4 +1,5 @@
-import { CSSProperties, Dispatch, ReactElement, ReactNode } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { CSSProperties, Dispatch, ReactElement } from 'react'
 
 export type TableData = { [x: string]: never }[]
 
@@ -7,9 +8,9 @@ export type ColumnAlign = 'left' | 'center' | 'right'
 export interface ColumnTypeProps {
   id: string
   dataKey: string
-  header?: ReactNode
+  header?: string | ((column: ColumnTypeProps) => ReactElement)
+  render?: (value: any, options: RenderCellOptions) => ReactElement
   className?: string
-  render?: (value: never, column: ColumnRenderOptions) => ReactElement
   style?: CSSProperties
   width?: string | number
   align?: ColumnAlign
@@ -19,9 +20,9 @@ export interface ColumnTypeProps {
 export interface ColumnProps {
   id?: string
   dataKey: string
-  header?: ReactNode
+  header?: string | ((column: ColumnTypeProps) => ReactElement)
+  render?: (value: any, options: RenderCellOptions) => ReactElement
   className?: string
-  render?: (value: never, column: ColumnRenderOptions) => ReactElement
   style?: CSSProperties
   width?: string | number
   align?: ColumnAlign
@@ -40,8 +41,8 @@ export interface ColumnRenderOptions {
   column: ColumnTypeProps
   rowData: { [x: string]: never }
   rowIndex: number
-  tableState?: { [x: string]: never }
-  setTableState?: (state: { [x: string]: never }) => void
+  tableState?: { [x: string]: any }
+  setTableState?: (state: { [x: string]: any }) => void
 }
 
 export interface RowProps {
@@ -49,13 +50,19 @@ export interface RowProps {
   index: number
 }
 
-export interface TableContextProps {
+export interface TableContextProps<T> {
   data: TableData
   columns: ColumnsState
   dispatchColumns: Dispatch<ColumnsStateAction>
-  options: TableOptions
-  state?: { [x: string]: never }
-  setState?: (state: { [x: string]: never }) => void
+  options: Partial<TableOptions>
+  state?: T & { [x: string]: any }
+  setState?: (state: T & { [x: string]: any }) => void
+}
+
+export interface RenderCellOptions {
+  column: ColumnTypeProps
+  rowData: { [x: string]: never }
+  rowIndex: number
 }
 
 export interface RenderRowOptions {
@@ -66,19 +73,20 @@ export interface RenderRowOptions {
 }
 
 export interface TableOptions {
-  rowKey?: string
-  onRowClick?: (rowData: { [x: string]: never }) => void
-  renderRow?: ({ rowData, rowIndex }: RenderRowOptions) => ReactElement
-  stickyHeader?: CSSProperties
-  className?: string
-  containerClassName?: string
-  fixedLayout?: boolean
+  rowKey: string
+  onRowClick: (rowData: { [x: string]: never }) => void
+  renderRow?: (rowProps: RenderRowOptions) => ReactElement
+  stickyHeader: CSSProperties
+  className: string
+  containerClassName: string
+  fixedLayout: boolean
 }
 
-export interface TableProps extends TableOptions {
+export interface TableProps extends Partial<TableOptions> {
+  rowKey: string
   data: TableData
-  state?: { [x: string]: never }
-  setState?: (state: { [x: string]: never }) => void
+  state?: { [x: string]: any }
+  setState?: (state: { [x: string]: any }) => void
 }
 
 export interface CellProps {

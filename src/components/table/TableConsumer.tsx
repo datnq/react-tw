@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import Row from './Row'
 import { getHeaderKey, getRowKey, getColumnKey } from './utils'
 import HeaderCell from './HeaderCell'
-import useTable from '../../hooks/useTable'
+import { useTable } from '../../hooks'
 
 const TableConsumer: FC<{}> = () => {
   const { data, columns, options } = useTable()

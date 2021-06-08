@@ -1,10 +1,10 @@
 import clsx from 'clsx'
-import React, { FC } from 'react'
-import useTable from '../../hooks/useTable'
+import React from 'react'
+import { useTable } from '../../hooks'
 import { HeaderCellProps } from './types'
 import { getHeaderKey } from './utils'
 
-const HeaderCell: FC<HeaderCellProps> = ({ column }) => {
+const HeaderCell: React.FC<HeaderCellProps> = ({ column }) => {
   const { options } = useTable()
   const { stickyHeader } = options
   return (

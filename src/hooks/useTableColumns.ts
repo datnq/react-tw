@@ -1,7 +1,7 @@
 import { ColumnsState, ColumnTypeProps } from '../components/table'
-import useTable from './useTable'
+import { useTable } from './useTable'
 
-const useTableColumns = (): [
+export const useTableColumns = (): [
   ColumnsState,
   (column: ColumnTypeProps) => void,
   (index: number, column: ColumnTypeProps) => void
@@ -16,5 +16,3 @@ const useTableColumns = (): [
 
   return [columns, addColumn, updateColumn]
 }
-
-export default useTableColumns

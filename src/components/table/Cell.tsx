@@ -1,12 +1,10 @@
-import React, { FC } from 'react'
+import React from 'react'
 import get from 'lodash.get'
 import { DataCellProps } from './types'
 import clsx from 'clsx'
-import useTable from '../../hooks/useTable'
 
-const Cell: FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
-  const value = get(rowData, column.dataKey)
-  const { state, setState } = useTable()
+const Cell: React.FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
+  const value = get(rowData, column.dataKey, '')
 
   return (
     <td
@@ -25,11 +23,9 @@ const Cell: FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
         ? column.render(value, {
             column,
             rowData,
-            rowIndex,
-            tableState: state,
-            setTableState: setState
+            rowIndex
           })
-        : value}
+        : String(value)}
     </td>
   )
 }

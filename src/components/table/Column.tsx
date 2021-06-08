@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useEffect } from 'react'
-import useTableColumns from '../../hooks/useTableColumns'
+import { useTableColumns } from '../../hooks'
 import { ColumnProps } from './types'
 
 const Column: FC<ColumnProps> = ({ dataKey, id, ...opts }) => {

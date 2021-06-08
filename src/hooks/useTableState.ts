@@ -1,12 +1,10 @@
-import useTable from './useTable'
+import { useTable } from './useTable'
 
-const useTableState = (): {
-  state: { [x: string]: never } | undefined
-  setState: ((state: { [x: string]: never }) => void) | undefined
+export const useTableState = <T>(): {
+  state?: T
+  setState: ((state: T) => void) | undefined
 } => {
-  const { state, setState } = useTable()
+  const { state, setState } = useTable<T>()
 
   return { state, setState }
 }
-
-export default useTableState
