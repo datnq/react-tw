@@ -30,9 +30,11 @@ const Dialog: FC<DialogProps> = ({
     <Modal {...modalProps} onClose={onClose} size='sm'>
       {(close: () => void): ReactNode => (
         <Fragment>
+          <div className='text-center'>
+            <DialogIcon variant={variant} />
+          </div>
           {title && (
             <ModalTitle className='text-center'>
-              <DialogIcon variant={variant} />
               <span>{title}</span>
             </ModalTitle>
           )}

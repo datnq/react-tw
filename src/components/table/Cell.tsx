@@ -9,7 +9,7 @@ const Cell: React.FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
   return (
     <td
       className={clsx(
-        'px-4 py-2 whitespace-nowrap text-sm',
+        'p-4 whitespace-nowrap text-sm',
         {
           'text-center': column.align === 'center',
           'text-right': column.align === 'right',

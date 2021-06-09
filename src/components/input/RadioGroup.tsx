@@ -1,5 +1,5 @@
 import React, { forwardRef, Fragment } from 'react'
-import { Checkbox } from '.'
+import Checkbox from './Checkbox'
 import Radio from './Radio'
 import { CheckboxGroupProps } from './types'
 

@@ -8,6 +8,7 @@ import Selectors from './Selectors'
 import Modals from './Modals'
 import Toasters from './Toasters'
 import Tables from './Table'
+import Slideout from './Slideout'
 
 const routes: { [key: string]: NavItemProps } = {
   home: {
@@ -50,6 +51,11 @@ const routes: { [key: string]: NavItemProps } = {
     href: '/modals',
     label: 'Modal',
     component: Modals
+  },
+  slideout: {
+    href: '/slideout',
+    label: 'Slideout',
+    component: Slideout
   },
   toasters: {
     href: '/toasts',

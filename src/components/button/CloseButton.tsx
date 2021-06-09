@@ -1,14 +1,15 @@
 import clsx from 'clsx'
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import Button from './Button'
 import { XIcon } from '../icons'
 
 interface CloseButtonProps {
   onClose: () => void
   className?: string
+  icon?: ReactElement
 }
 
-const CloseButton: FC<CloseButtonProps> = ({ onClose, className }) => {
+const CloseButton: FC<CloseButtonProps> = ({ onClose, className, icon }) => {
   return (
     <Button
       variant='custom'
@@ -18,7 +19,7 @@ const CloseButton: FC<CloseButtonProps> = ({ onClose, className }) => {
       )}
       onClick={onClose}
     >
-      <XIcon />
+      {icon || <XIcon />}
     </Button>
   )
 }

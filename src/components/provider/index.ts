@@ -1,2 +1,2 @@
-export { default as ThemeProvider } from './Provider'
+export { default as TwxProvider } from './Provider'
 export * from './types'

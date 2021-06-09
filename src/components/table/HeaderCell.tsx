@@ -13,7 +13,7 @@ const HeaderCell: React.FC<HeaderCellProps> = ({ column }) => {
       style={stickyHeader}
       scope='col'
       className={clsx(
-        'px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider',
+        'p-4 text-xs font-medium text-gray-500 uppercase tracking-wider',
         {
           'text-center': column.align === 'center',
           'text-right': column.align === 'right',
