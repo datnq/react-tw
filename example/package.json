@@ -26,6 +26,7 @@
     "@types/react-router-dom": "^5.1.7",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
+    "react-hook-form": "^7.8.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "link:../node_modules/react-scripts",
     "react-world-flags": "^1.4.0",

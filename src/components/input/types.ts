@@ -21,3 +21,13 @@ export interface InputProps
 export interface TextareaProps
   extends CommonInputProps,
     ComponentPropsWithoutRef<'textarea'> {}
+
+export interface CheckboxGroupOption {
+  key: string
+  value?: string | number | readonly string[]
+  text: string
+}
+
+export interface CheckboxGroupProps extends CheckboxProps {
+  options: CheckboxGroupOption[]
+}

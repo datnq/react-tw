@@ -16,19 +16,12 @@ export const useDialog = (): DialogActions => {
       awaitingRef.current = { resolve }
     })
   }
-  const hideDialog = (): void => {
-    setTimeout(() => {
-      setDialog && setDialog({ open: false })
-    }, 200)
-  }
 
   const handleOk = async (): Promise<void> => {
     awaitingRef.current && (await awaitingRef.current.resolve(true))
-    hideDialog()
   }
   const handleCancel = async (): Promise<void> => {
     awaitingRef.current && (await awaitingRef.current.resolve(false))
-    hideDialog()
   }
 
   const alert = (

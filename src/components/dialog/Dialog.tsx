@@ -13,18 +13,21 @@ const Dialog: FC<DialogProps> = ({
   onOK,
   onCancel,
   showCancel,
+  onClose,
   title,
   variant,
   ...modalProps
 }) => {
-  const cancel = (): void => {
+  const cancel = (close: () => void): void => {
     onCancel && onCancel()
+    close()
   }
-  const ok = (): void => {
+  const ok = (close: () => void): void => {
     onOK && onOK()
+    close()
   }
   return (
-    <Modal {...modalProps} onClose={showCancel ? cancel : ok} size='sm'>
+    <Modal {...modalProps} onClose={onClose} size='sm'>
       {(close: () => void): ReactNode => (
         <Fragment>
           {title && (
@@ -36,11 +39,19 @@ const Dialog: FC<DialogProps> = ({
           <ModalContent className='text-center'>{message}</ModalContent>
           <ModalFooter className='justify-center'>
             {showCancel && (
-              <Button {...cancelButtonProps} className='w-24' onClick={close}>
+              <Button
+                {...cancelButtonProps}
+                className='w-24'
+                onClick={(): void => cancel(close)}
+              >
                 {cancelButton || 'Cancel'}
               </Button>
             )}
-            <Button {...okButtonProps} onClick={ok} className='w-24'>
+            <Button
+              {...okButtonProps}
+              onClick={(): void => ok(close)}
+              className='w-24'
+            >
               {okButton || 'OK'}
             </Button>
           </ModalFooter>

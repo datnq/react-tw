@@ -10,12 +10,18 @@ const Provider: FC<ProviderProps> = ({ theme, dialogProps, children }) => {
   const themeValue = merge(defaultTheme, theme || {})
   const [dialog, setDialog] = useState<DialogProps | {}>(dialogProps || {})
 
+  const closeDialog = (): void => {
+    setTimeout(() => {
+      setDialog && setDialog({ open: false })
+    }, 300)
+  }
+
   return (
     <TwxContext.Provider
       value={{ theme: themeValue, dialog: dialog, setDialog }}
     >
       {children}
-      <Dialog {...dialog} />
+      <Dialog {...dialog} onClose={closeDialog} />
       <Toaster />
     </TwxContext.Provider>
   )

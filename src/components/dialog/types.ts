@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 import { ButtonProps } from '../button'
 import { ModalProps } from '../modal'
 
+export type DialogVariant = 'info' | 'warn' | 'danger' | 'error' | 'success'
+
 export interface DialogProps extends ModalProps {
   message?: ReactNode
   okButton?: ReactNode
@@ -11,7 +13,7 @@ export interface DialogProps extends ModalProps {
   onOK?: () => void
   onCancel?: () => void
   showCancel?: boolean
-  variant?: 'info' | 'warn' | 'danger' | 'error' | 'success'
+  variant?: DialogVariant
 }
 
 export interface DialogIconProps {

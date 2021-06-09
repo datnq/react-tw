@@ -9,13 +9,14 @@ import {
 import PageHeader from '../components/PageHeader'
 import Section from '../components/Section'
 import { CheckOutline } from '@graywolfai/react-heroicons'
+import { DialogVariant } from '../../../dist/components/dialog'
 
 const Modals = () => {
   const [open, setOpen] = useState(false)
   const { alert, confirm } = useDialog()
   const [dialogResult, setDialogResult] = useState<boolean | undefined>()
 
-  const openAlert = async (variant?: string) => {
+  const openAlert = async (variant?: DialogVariant) => {
     const result = await alert(
       'Little Widgets contains 24 thoughtful, professionally designed HTML5/CSS3 website popups and widgets.',
       { title: 'Attention!', variant }
@@ -26,7 +27,9 @@ const Modals = () => {
   const openConfirm = async () => {
     const result = await confirm('This is an confirm message', {
       okButton: 'Yes',
-      cancelButton: 'No'
+      cancelButton: 'No',
+      variant: 'info',
+      title: 'Confirm'
     })
     setDialogResult(result)
   }
@@ -51,7 +54,7 @@ const Modals = () => {
               setOpen(false)
             }}
           >
-            {(close: () => void) => (
+            {(close?: () => void) => (
               <>
                 <ModalContent>
                   A fully-managed, renderless dialog component jam-packed with
@@ -92,21 +95,11 @@ const Modals = () => {
       </Section>
       <Section title='Dialog variants'>
         <div className='space-x-4 flex items-center'>
-          <Button onClick={() => openAlert('warn')}>
-            Warning
-          </Button>
-          <Button onClick={() => openAlert('info')}>
-            Info
-          </Button>
-          <Button onClick={() => openAlert('danger')}>
-            Danger
-          </Button>
-          <Button onClick={() => openAlert('error')}>
-            Error
-          </Button>
-          <Button onClick={() => openAlert('success')}>
-            Success
-          </Button>
+          <Button onClick={() => openAlert('warn')}>Warning</Button>
+          <Button onClick={() => openAlert('info')}>Info</Button>
+          <Button onClick={() => openAlert('danger')}>Danger</Button>
+          <Button onClick={() => openAlert('error')}>Error</Button>
+          <Button onClick={() => openAlert('success')}>Success</Button>
         </div>
       </Section>
     </>
