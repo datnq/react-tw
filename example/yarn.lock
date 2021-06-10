@@ -3851,7 +3851,7 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-date-fns@^2.0.0-alpha.27, date-fns@^2.22.1:
+date-fns@^2.22.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
   integrity sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==
@@ -9494,13 +9494,6 @@ react-syntax-highlighter@^15.4.3:
     lowlight "^1.17.0"
     prismjs "^1.22.0"
     refractor "^3.2.0"
-
-react-use-calendar@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-use-calendar/-/react-use-calendar-1.0.0.tgz#102a7e7346d3c0b29d3fa82a06d61e17f029faaa"
-  integrity sha512-SDrr6Mr0t1osP9JWnJPAZhioBmfj1IT6KX36ii+fE+7rahvO9o1T85hXUUDjbewQ+tmCi/XmMoUq1pwaqWEMdA==
-  dependencies:
-    date-fns "^2.0.0-alpha.27"
 
 react-world-flags@^1.4.0:
   version "1.4.0"

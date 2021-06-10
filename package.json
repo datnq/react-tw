@@ -1,6 +1,6 @@
 {
   "name": "@datnq/react-tw",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "React UI based on TailwindCSS",
   "author": "datnq",
   "license": "MIT",
@@ -25,9 +25,12 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "@headlessui/react": "^1.2.0",
+    "react": "^16.0.0",
+    "tailwindcss": "^2.1.4"
   },
   "devDependencies": {
+    "@headlessui/react": "^1.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -67,13 +70,11 @@
     "dist"
   ],
   "dependencies": {
-    "@headlessui/react": "^1.2.0",
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
     "lodash.omit": "^4.5.0",
-    "react-hot-toast": "^2.0.0",
-    "react-use-calendar": "^1.0.0"
+    "react-hot-toast": "^2.0.0"
   }
 }
