@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader'
 import { ArrowRightOutline } from '@graywolfai/react-heroicons'
 import Section from '../components/Section'
 import { Controller, useForm } from 'react-hook-form'
+import Syntax from '../components/Syntax'
 
 const sizeOpts = [
   { key: 'xs', value: 'xs', text: 'Extra small' },
@@ -97,6 +98,29 @@ const Slideout = () => {
             />
           </div>
         </SlideOut>
+        <Syntax className='mt-8'>{`import { SlideOut } from '@datnq/react-tw'
+
+const position = 'right' // left | right
+const size = 'md' // xs | sm | md | lg | xl | 2xl | 3xl | full
+
+const [open, setOpen] = useState(false)
+
+<SlideOut
+  open={open}
+  onClose={() => setOpen(false)}
+  closeIcon={<ArrowRightOutline className='w-6 h-6' />}
+  size={size}
+  position={position}
+  title='Slideout panel'
+>
+  <div className='absolute inset-0 px-4 sm:px-6'>
+    <div
+      className='h-full border-2 border-dashed border-gray-200'
+      aria-hidden='true'
+    />
+  </div>
+</SlideOut>
+        `}</Syntax>
       </Section>
     </>
   )
