@@ -67,7 +67,6 @@ const FilePicker: FC<FilePickerProps> = ({
     const { files } = e.target
     const selected = files !== null ? Array.from(files) : []
     clearFileInput(e.target)
-    console.log(selected)
 
     if (replacingRef.current === undefined) {
       addFiles(selected)
