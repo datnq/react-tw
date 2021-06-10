@@ -5,12 +5,14 @@ import {
   Datepicker,
   FilePicker,
   FilePickerRenderProps,
-  getDataUrl
+  getDataUrl,
+  Input
 } from '@datnq/react-tw'
 import PageHeader from '../components/PageHeader'
 import Section from '../components/Section'
 import { UploadOutline } from '@graywolfai/react-heroicons'
 import clsx from 'clsx'
+import { get } from 'lodash'
 
 const options: SelectOptionsProps[] = [
   {
@@ -64,6 +66,25 @@ const Selectors = () => {
         </div>
       </Section>
       <Section title='FilePicker'>
+        <FilePicker>
+          {({ files, handlers }: FilePickerRenderProps) => {
+            return (
+              <div className='relative w-80 cursor-pointer' onClick={handlers.add}>
+                <Input
+                  readOnly
+                  value={get(files, '[0].name')}
+                  className='pr-20 cursor-pointer'
+                  containerClassName='w-full'
+                />
+                <button className='absolute inset-y-0 right-0 text-sm px-4 focus:outline-none border-l border-l-gray-400'>
+                  Browse&hellip;
+                </button>
+              </div>
+            )
+          }}
+        </FilePicker>
+      </Section>
+      <Section title='FilePicker (droppable)'>
         <FilePicker accept='image/*'>
           {({
             files,
