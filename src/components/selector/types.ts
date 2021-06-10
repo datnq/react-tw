@@ -1,4 +1,9 @@
-import { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  MutableRefObject,
+  ReactElement,
+  ReactNode
+} from 'react'
 import { ButtonProps } from '../button'
 
 export interface DateFormats {
@@ -24,6 +29,13 @@ export interface PickerProps<T> {
   narrow?: boolean
 }
 
+export interface FilePickerProps
+  extends Omit<ComponentPropsWithoutRef<'input'>, 'onChange'> {
+  onChange?: (files: File[]) => void
+  multiple?: boolean
+  children: ReactNode | (() => ReactNode)
+}
+
 export interface DatepickerProps extends PickerProps<Date | undefined> {
   format?: Intl.DateTimeFormatOptions
   showOtherMonth?: boolean
@@ -47,4 +59,16 @@ export interface ListboxOptionsProps {
 
 export interface ListItemProps extends ComponentPropsWithoutRef<'div'> {
   selected?: boolean
+}
+
+export interface FilePickerRenderProps {
+  files: File[]
+  handlers: {
+    add: () => void
+    clear: () => void
+    remove: (index: number) => void
+    replace: (index?: number) => void
+  }
+  dragging: boolean
+  dragDropRef: MutableRefObject<HTMLElement | null>
 }

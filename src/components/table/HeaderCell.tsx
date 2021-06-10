@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useTable } from '../../hooks'
+import { renderNodeOrFunction } from '../../utils'
 import { HeaderCellProps } from './types'
 import { getHeaderKey } from './utils'
 
@@ -22,9 +23,7 @@ const HeaderCell: React.FC<HeaderCellProps> = ({ column }) => {
         column.className
       )}
     >
-      {typeof column.header === 'function'
-        ? column.header(column)
-        : column.header}
+      {renderNodeOrFunction(column.header, column)}
     </th>
   )
 }

@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, { Fragment, useState, useEffect, FC } from 'react'
+import { renderNodeOrFunction } from '../../utils'
 import { CloseButton } from '../button'
 import ModalTitle from './ModalTitle'
 import { ModalProps } from './types'
@@ -74,7 +75,7 @@ const Modal: FC<ModalProps> = ({
             >
               <CloseButton onClose={close} className='absolute top-4 right-4' />
               {title && <ModalTitle>{title}</ModalTitle>}
-              {typeof children === 'function' ? children(close) : children}
+              {renderNodeOrFunction(children, close)}
             </div>
           </Transition.Child>
         </div>

@@ -10,7 +10,7 @@ const SelectionColumn: FC<ColumnProps> = ({ id, className, ...props }) => {
       id={id || '__selection__'}
       className={clsx('w-16', className)}
       header={(column): ReactElement => <SelectionHeaderCell column={column} />}
-      render={(value, { column }): ReactElement => (
+      render={({ value, column }): ReactElement => (
         <SelectionCell column={column} value={value} />
       )}
       {...props}

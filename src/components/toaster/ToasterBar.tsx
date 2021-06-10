@@ -4,6 +4,7 @@ import { ToastBarProps } from './types'
 import clsx from 'clsx'
 import ToastIcon from './ToastIcon'
 import { CloseButton } from '../button'
+import { renderNodeOrFunction } from '../../utils'
 
 const getAnimationStyle = (
   position: ToastPosition,
@@ -26,9 +27,7 @@ export const ToastBar: React.FC<ToastBarProps> = React.memo(
     const icon = <ToastIcon toast={toast} />
     const message = (
       <div className='flex flex-auto flex-grow' {...toast.ariaProps}>
-        {typeof toast.message === 'function'
-          ? toast.message(toast)
-          : toast.message}
+        {renderNodeOrFunction(toast.message, toast)}
       </div>
     )
 
@@ -42,9 +41,9 @@ export const ToastBar: React.FC<ToastBarProps> = React.memo(
           toast.className
         )}
       >
-        {typeof children === 'function' ? (
-          children({ icon, message })
-        ) : (
+        {renderNodeOrFunction(
+          children,
+          { icon, message },
           <Fragment>
             {icon}
             {message}

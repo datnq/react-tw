@@ -2,6 +2,7 @@ import React from 'react'
 import get from 'lodash.get'
 import { DataCellProps } from './types'
 import clsx from 'clsx'
+import { renderNodeOrFunction } from '../../utils'
 
 const Cell: React.FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
   const value = get(rowData, column.dataKey, '')
@@ -19,13 +20,16 @@ const Cell: React.FC<DataCellProps> = ({ column, rowData, rowIndex }) => {
       )}
       style={column.style}
     >
-      {typeof column.render === 'function'
-        ? column.render(value, {
-            column,
-            rowData,
-            rowIndex
-          })
-        : String(value)}
+      {renderNodeOrFunction(
+        column.render,
+        {
+          value,
+          column,
+          rowData,
+          rowIndex
+        },
+        String(value)
+      )}
     </td>
   )
 }

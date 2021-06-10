@@ -15,4 +15,6 @@ export * from './components/toaster'
 export * from './hooks'
 export * from './theme'
 
+export { getInitials, getDataUrl } from './utils'
+
 export { presets } from './plugins/presets'

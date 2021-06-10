@@ -9,7 +9,7 @@ export interface ColumnTypeProps {
   id: string
   dataKey: string
   header?: string | ((column: ColumnTypeProps) => ReactElement)
-  render?: (value: any, options: RenderCellOptions) => ReactElement
+  render?: (options: RenderCellOptions) => ReactElement
   className?: string
   style?: CSSProperties
   width?: string | number
@@ -21,7 +21,7 @@ export interface ColumnProps {
   id?: string
   dataKey: string
   header?: string | ((column: ColumnTypeProps) => ReactElement)
-  render?: (value: any, options: RenderCellOptions) => ReactElement
+  render?: (options: RenderCellOptions) => ReactElement
   className?: string
   style?: CSSProperties
   width?: string | number
@@ -60,6 +60,7 @@ export interface TableContextProps<T> {
 }
 
 export interface RenderCellOptions {
+  value: any
   column: ColumnTypeProps
   rowData: { [x: string]: never }
   rowIndex: number
