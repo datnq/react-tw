@@ -45,7 +45,7 @@ const Selectors = () => {
           options={options}
           value={select}
           onChange={setSelect}
-          containerClassName='w-full max-w-xs'
+          containerClassName='w-full md:max-w-xs'
         />
         <Syntax className='mt-8'>{`import { Select } from '@datnq/react-tw'
 
@@ -68,7 +68,7 @@ const [select, setSelect] = useState('vi-VN')
           onChange={setSelectDate}
           placeholder='Pick a date'
           value={selectDate}
-          containerClassName='w-full max-w-xs'
+          containerClassName='w-full md:max-w-xs'
           format={{
             weekday: 'short',
             day: 'numeric',
@@ -98,7 +98,7 @@ const [selectDate, setSelectDate] = useState()
           {({ files, handlers }: FilePickerRenderProps) => {
             return (
               <div
-                className='relative w-full max-w-xs cursor-pointer'
+                className='relative w-full md:max-w-xs cursor-pointer'
                 onClick={handlers.add}
               >
                 <Input

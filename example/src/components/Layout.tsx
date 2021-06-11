@@ -2,7 +2,7 @@ import React, { useState, PropsWithChildren, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import clsx from 'clsx'
 import { useScreen, SlideOut, Button } from '@datnq/react-tw'
-import { MenuAlt2Outline } from '@graywolfai/react-heroicons'
+import { ArrowRightOutline, MenuAlt2Outline } from '@graywolfai/react-heroicons'
 import routes from '../routes'
 import Nav from './Nav'
 import { ReactComponent as Logo } from '../assets/logo.svg'
@@ -26,7 +26,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
       className={clsx(
         'min-h-screen',
         'flex flex-col',
-        'md:grid md:grid-flow-col md:grid-cols-layout md:grid-rows-layout'
+        'md:grid grid-flow-col grid-cols-layout grid-rows-layout'
       )}
     >
       <header className='border-r row-span-2 top-0 bg-white flex md:block items-center'>
@@ -37,11 +37,17 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
           <Nav routes={routes} className='my-8' />
         ) : (
           <div className='p-4 order-1'>
-            <Button narrow onClick={() => setOpen(true)}>
+            <Button narrow onClick={() => setOpen(true)} className='!border-0 shadow-none'>
               <MenuAlt2Outline className='w-5 h-5' />
             </Button>
-            <SlideOut onClose={() => setOpen(false)} open={open} size='full'>
-              <Nav routes={routes} className='my-8' />
+            <SlideOut
+              onClose={() => setOpen(false)}
+              open={open}
+              closeIcon={<ArrowRightOutline className='w-6 h-6' />}
+              position='left'
+              size='sm'
+            >
+              <Nav routes={routes} />
             </SlideOut>
           </div>
         )}

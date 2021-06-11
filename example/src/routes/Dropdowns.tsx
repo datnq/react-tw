@@ -117,7 +117,7 @@ const items = [
 </Dropdown>`}</Syntax>
       </Section>
       <Section title='With items list (custom item render)'>
-        <div className='space-x-4'>
+        <div className='flex flex-wrap gap-4'>
           <Dropdown
             items={customRenderItems}
             onItemClick={setItemClicked2}

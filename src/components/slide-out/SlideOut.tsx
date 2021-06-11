@@ -37,7 +37,7 @@ const SlideOut: FC<SlideOutProps> = ({
           <div
             className={clsx(
               'fixed inset-y-0 max-w-full flex',
-              position === 'right' ? 'right-0 pl-10' : 'left-0 pr-10'
+              position === 'right' ? 'right-0 md:pl-10' : 'left-0 md:pr-10'
             )}
           >
             <Transition.Child
@@ -65,24 +65,14 @@ const SlideOut: FC<SlideOutProps> = ({
                   'max-w-full': size === 'full'
                 })}
               >
-                <Transition.Child
-                  as={Fragment}
-                  enter='ease-in-out duration-500'
-                  enterFrom='opacity-0'
-                  enterTo='opacity-100'
-                  leave='ease-in-out duration-500'
-                  leaveFrom='opacity-100'
-                  leaveTo='opacity-0'
-                >
-                  <div className='absolute top-7 right-6 flex'>
-                    <CloseButton
-                      icon={closeIcon}
-                      className='rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
-                      aria-hidden='true'
-                      onClose={onClose}
-                    />
-                  </div>
-                </Transition.Child>
+                <div className='absolute top-7 right-6 flex'>
+                  <CloseButton
+                    icon={closeIcon}
+                    className='rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
+                    aria-hidden='true'
+                    onClose={onClose}
+                  />
+                </div>
                 <div className='h-full flex flex-col py-6 bg-white shadow-xl overflow-x-hidden'>
                   <div className='px-4 sm:px-6'>
                     <Dialog.Title className='text-lg font-medium text-gray-900'>

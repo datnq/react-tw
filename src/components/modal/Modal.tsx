@@ -40,7 +40,7 @@ const Modal: FC<ModalProps> = ({
         className='fixed inset-0 z-20 overflow-y-auto text-center'
         onClose={close}
       >
-        <div className='min-h-screen px-4 text-center'>
+        <div className='min-h-screen px-0 md:px-4 text-center'>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'

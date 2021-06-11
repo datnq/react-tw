@@ -57,6 +57,7 @@ export const presets = {
   },
   variants: {
     extend: {
+      borderWidth: ['important'],
       borderColor: ['checked', 'disabled', 'checked-sibling'],
       backgroundColor: ['checked', 'disabled', 'checked-sibling'],
       cursor: ['disabled'],

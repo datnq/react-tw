@@ -9,6 +9,6 @@ export interface NavItemProps {
 }
 
 export interface NavProps {
-  className: string,
+  className?: string,
   routes: { [key: string]: NavItemProps }
 }

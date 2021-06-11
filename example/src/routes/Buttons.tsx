@@ -14,7 +14,7 @@ const Buttons = () => {
     <>
       <PageHeader title='Button' subtitle='Button styles and variants' />
       <Section title='Variants'>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 flex-wrap'>
           <Button>Default</Button>
           <Button variant='primary'>Primary</Button>
           <Button variant='danger'>Danger</Button>
@@ -44,7 +44,7 @@ const Buttons = () => {
 </div>`}</Syntax>
       </Section>
       <Section title='With icons'>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 flex-wrap'>
           <Button variant='primary'>
             <PlusOutline className='w-5 h-5' />
             <span>Create new item</span>

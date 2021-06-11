@@ -12,7 +12,7 @@ const Toasters = () => {
         subtitle='Toaster messages and notifications'
       />
       <Section title='Toaster'>
-        <div className='space-x-2'>
+        <div className='flex flex-wrap gap-2'>
           <Button onClick={() => toast('Default toast message')}>
             Default
           </Button>
