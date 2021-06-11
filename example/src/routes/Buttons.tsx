@@ -14,7 +14,7 @@ const Buttons = () => {
     <>
       <PageHeader title='Button' subtitle='Button styles and variants' />
       <Section title='Variants'>
-        <div className='space-x-2'>
+        <div className='flex gap-2'>
           <Button>Default</Button>
           <Button variant='primary'>Primary</Button>
           <Button variant='danger'>Danger</Button>
@@ -22,7 +22,7 @@ const Buttons = () => {
         </div>
         <Syntax className='mt-8'>{`import { Button } from '@datnq/react-tw'
 
-<div className='space-x-2'>
+<div className='flex gap-2'>
   <Button>Default</Button>
   <Button variant='primary'>Primary</Button>
   <Button variant='danger'>Danger</Button>
@@ -44,7 +44,7 @@ const Buttons = () => {
 </div>`}</Syntax>
       </Section>
       <Section title='With icons'>
-        <div className='space-x-2'>
+        <div className='flex gap-2'>
           <Button variant='primary'>
             <PlusOutline className='w-5 h-5' />
             <span>Create new item</span>
@@ -59,7 +59,7 @@ const Buttons = () => {
         </div>
         <Syntax className='mt-8'>{`import { Button } from '@datnq/react-tw'
 
-<div className='space-x-2'>
+<div className='flex gap-2'>
   <Button variant='primary'>
     <PlusOutline className='w-5 h-5' />
     <span>Create new item</span>

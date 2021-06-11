@@ -10,7 +10,7 @@ const Avatars = () => {
     <>
       <PageHeader title='Avatar' subtitle='Avatar and avatar stack' />
       <Section title='Avatar'>
-        <div className='space-x-4 flex'>
+        <div className='gap-4 flex'>
           <Avatar>
             <UserOutline className='w-6 h-6' />
           </Avatar>
@@ -20,7 +20,7 @@ const Avatars = () => {
         <Syntax className='mt-8'>
           {`import { Avatar } from '@datnq/react-tw'
 
-<div className='space-x-4 flex'>
+<div className='gap-4 flex'>
   <Avatar>
     <UserOutline className='w-6 h-6' />
   </Avatar>
@@ -30,7 +30,7 @@ const Avatars = () => {
         </Syntax>
       </Section>
       <Section title='Avatar group'>
-        <div className='-space-x-6 flex'>
+        <div className='-space-x-6'>
           <Avatar picture='https://randomuser.me/api/portraits/women/57.jpg' />
           <Avatar picture='https://randomuser.me/api/portraits/women/66.jpg' />
           <Avatar picture='https://randomuser.me/api/portraits/women/12.jpg' />
@@ -40,7 +40,7 @@ const Avatars = () => {
         <Syntax className='mt-8'>
           {`import { Avatar } from '@datnq/react-tw'
 
-<div className='space-x-4 flex'>
+<div className='-space-x-6 flex'>
   <Avatar picture='https://randomuser.me/api/portraits/women/57.jpg' />
   <Avatar picture='https://randomuser.me/api/portraits/women/66.jpg' />
   <Avatar picture='https://randomuser.me/api/portraits/women/12.jpg' />

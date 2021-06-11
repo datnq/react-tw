@@ -13,7 +13,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
         </Link>
         <Nav routes={routes} className='my-8' />
       </header>
-      <main className='p-8'>{children}</main>
+      <main className='p-8 max-w-2xl'>{children}</main>
       <footer className='flex flex-row text-gray-500 text-sm items-center p-4 border-t border-gray-300'>
         <span>
           &copy; 2021{' '}

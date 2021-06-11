@@ -41,14 +41,12 @@ const Selectors = () => {
     <>
       <PageHeader title='Selector' subtitle='Select, Datepicker...' />
       <Section title='Select'>
-        <div className='space-x-2'>
-          <Select
-            options={options}
-            value={select}
-            onChange={setSelect}
-            containerClassName='w-full max-w-xs'
-          />
-        </div>
+        <Select
+          options={options}
+          value={select}
+          onChange={setSelect}
+          containerClassName='w-full max-w-xs'
+        />
         <Syntax className='mt-8'>{`import { Select } from '@datnq/react-tw'
 
 const options = [
@@ -58,54 +56,51 @@ const options = [
 
 const [select, setSelect] = useState('vi-VN')
 
-<div className='space-x-2'>
-  <Select
-    options={options}
-    value={select}
-    onChange={setSelect}
-    containerClassName='w-full max-w-xs'
-  />
-</div>`}</Syntax>
+<Select
+  options={options}
+  value={select}
+  onChange={setSelect}
+  containerClassName='w-full max-w-xs'
+/>`}</Syntax>
       </Section>
       <Section title='Datepicker'>
-        <div className='space-x-2'>
-          <Datepicker
-            onChange={setSelectDate}
-            placeholder='Pick a date'
-            value={selectDate}
-            containerClassName='w-full max-w-xs'
-            format={{
-              weekday: 'short',
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric'
-            }}
-          />
-        </div>
+        <Datepicker
+          onChange={setSelectDate}
+          placeholder='Pick a date'
+          value={selectDate}
+          containerClassName='w-full max-w-xs'
+          format={{
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          }}
+        />
         <Syntax className='mt-8'>{`import { Datepicker } from '@datnq/react-tw'
 
 const [selectDate, setSelectDate] = useState()
 
-<div className='space-x-2'>
-  <Datepicker
-    onChange={setSelectDate}
-    placeholder='Pick a date'
-    value={selectDate}
-    containerClassName='w-full max-w-xs'
-    format={{
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    }}
-  />
-</div>`}</Syntax>
+<Datepicker
+  onChange={setSelectDate}
+  placeholder='Pick a date'
+  value={selectDate}
+  containerClassName='w-full max-w-xs'
+  format={{ /* Intl API */
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  }}
+/>`}</Syntax>
       </Section>
       <Section title='FilePicker'>
         <FilePicker>
           {({ files, handlers }: FilePickerRenderProps) => {
             return (
-              <div className='relative w-80 cursor-pointer' onClick={handlers.add}>
+              <div
+                className='relative w-full max-w-xs cursor-pointer'
+                onClick={handlers.add}
+              >
                 <Input
                   readOnly
                   value={get(files, '[0].name')}
@@ -124,13 +119,8 @@ const [selectDate, setSelectDate] = useState()
 <FilePicker>
   {({ files, handlers }) => {
     return (
-      <div className='relative w-80 cursor-pointer' onClick={handlers.add}>
-        <Input
-          readOnly
-          value={get(files, '[0].name')}
-          className='pr-20 cursor-pointer'
-          containerClassName='w-full'
-        />
+      <div className='relative w-full max-w-xs cursor-pointer' onClick={handlers.add}>
+        <Input readOnly value={get(files, '[0].name')} className='pr-20 cursor-pointer' containerClassName='w-full' />
         <button className='absolute inset-y-0 right-0 text-sm px-4 focus:outline-none border-l border-l-gray-400'>
           Browse&hellip;
         </button>

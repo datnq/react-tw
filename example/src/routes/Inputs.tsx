@@ -9,74 +9,98 @@ const Inputs = () => {
     <>
       <PageHeader title='Input' subtitle='Native input controls' />
       <Section title='Text inputs'>
-        <div className='space-x-2'>
-          <Input placeholder='Text input' />
-          <Input type='number' placeholder='Number input' />
-          <Input type='password' placeholder='Password input' />
+        <div className='flex flex-col gap-2 md:flex-row'>
+          <Input placeholder='Text input' containerClassName='w-full' />
+          <Input
+            type='number'
+            placeholder='Number input'
+            containerClassName='w-full'
+          />
+          <Input
+            type='password'
+            placeholder='Password input'
+            containerClassName='w-full'
+          />
         </div>
         <Syntax className='mt-8'>{`import { Input } from '@datnq/react-tw'
 
-<div className='space-x-2'>
-  <Input placeholder='Text input' />
-  <Input type='number' placeholder='Number input' />
-  <Input type='password' placeholder='Password input' />
+<div className='flex flex-col gap-2 md:flex-row'>
+  <Input placeholder='Text input' containerClassName='w-full' />
+  <Input type='number' placeholder='Number input' containerClassName='w-full' />
+  <Input type='password' placeholder='Password input' containerClassName='w-full' />
 </div>`}</Syntax>
       </Section>
       <Section title='Input states'>
-        <div className='space-y-4'>
-          <div className='space-x-2'>
-            <Input placeholder='Normal (default)' />
-            <Input placeholder='Disabled' disabled />
+        <div className='space-y-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
+            <Input placeholder='Normal (default)' containerClassName='w-full' />
+            <Input
+              placeholder='Disabled'
+              disabled
+              containerClassName='w-full'
+            />
           </div>
-          <div className='space-x-2'>
-            <Input placeholder='Invalid' state='invalid' />
-            <Input placeholder='Valid' state='valid' />
+          <div className='flex gap-2 flex-col md:flex-row'>
+            <Input
+              placeholder='Invalid'
+              state='invalid'
+              containerClassName='w-full'
+            />
+            <Input
+              placeholder='Valid'
+              state='valid'
+              containerClassName='w-full'
+            />
           </div>
         </div>
         <Syntax className='mt-8'>{`import { Input } from '@datnq/react-tw'
 
-<div className='space-y-4'>
-  <div className='space-x-2'>
-    <Input placeholder='Normal (default)' />
-    <Input placeholder='Disabled' disabled />
+<div className='space-y-2'>
+  <div className='flex gap-2 flex-col md:flex-row'>
+    <Input placeholder='Normal (default)' containerClassName='w-full' />
+    <Input placeholder='Disabled' disabled containerClassName='w-full' />
   </div>
-  <div className='space-x-2'>
-    <Input placeholder='Invalid' state='invalid' />
-    <Input placeholder='Valid' state='valid' />
+  <div className='flex gap-2 flex-col md:flex-row'>
+    <Input placeholder='Invalid' state='invalid' containerClassName='w-full' />
+    <Input placeholder='Valid' state='valid' containerClassName='w-full' />
   </div>
 </div>`}</Syntax>
       </Section>
       <Section title='Sizes'>
-        <div className='space-x-2'>
-          <Input placeholder='Large' inputSize='lg' />
-          <Input placeholder='Medium (default)' />
-          <Input placeholder='Small' inputSize='sm' />
+        <div className='space-y-2'>
+          <Input
+            placeholder='Large'
+            inputSize='lg'
+            containerClassName='w-full'
+          />
+          <Input placeholder='Medium (default)' containerClassName='w-full' />
+          <Input
+            placeholder='Small'
+            inputSize='sm'
+            containerClassName='w-full'
+          />
         </div>
         <Syntax className='mt-8'>{`import { Input } from '@datnq/react-tw'
 
-<div className='space-x-2'>
-  <Input placeholder='Large' inputSize='lg' />
-  <Input placeholder='Medium (default)' />
-  <Input placeholder='Small' inputSize='sm' />
+<div className='space-y-2'>
+  <Input placeholder='Large' inputSize='lg' containerClassName='w-full' />
+  <Input placeholder='Medium (default)' containerClassName='w-full' />
+  <Input placeholder='Small' inputSize='sm' containerClassName='w-full' />
 </div>`}</Syntax>
       </Section>
       <Section title='Textarea'>
-        <div className='space-x-2'>
-          <Textarea
-            rows={8}
-            className='block w-full'
-            placeholder='Lorem ipsum dolor sit amet...'
-          />
-        </div>
+        <Textarea
+          rows={8}
+          className='block w-full'
+          placeholder='Lorem ipsum dolor sit amet...'
+        />
         <Syntax className='mt-8'>{`import { Textarea } from '@datnq/react-tw'
 
-<div className='space-x-2'>
-  <Textarea
-    rows={8}
-    className='block w-full'
-    placeholder='Lorem ipsum dolor sit amet...'
-  />
-</div>`}</Syntax>
+<Textarea
+  rows={8}
+  className='block w-full'
+  placeholder='Lorem ipsum dolor sit amet...'
+/>`}</Syntax>
       </Section>
       <Section title='Checkbox'>
         <div className='space-x-4 flex'>

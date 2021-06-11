@@ -10,7 +10,7 @@ const Section = ({ title, children }: PropsWithChildren<SectionProps>) => {
       <header className='my-5'>
         <h3 className='text-lg leading-6 font-medium text-gray-900'>{title}</h3>
       </header>
-      {children}
+      <div>{children}</div>
     </section>
   )
 }

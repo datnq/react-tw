@@ -48,8 +48,8 @@ const Slideout = () => {
       />
       <Section title='Slideout menu'>
         <form onSubmit={handleSubmit(setSlideOutState)} className='space-y-4'>
-          <div className='flex space-x-4'>
-            <Input {...register('title')} />
+          <div className='flex gap-4 flex-wrap'>
+            <Input {...register('title')} containerClassName='w-full flex-grow lg:w-auto' />
             <Controller
               control={control}
               name='size'
@@ -58,7 +58,7 @@ const Slideout = () => {
                   <Select
                     options={sizeOpts}
                     placeholder='Container size'
-                    containerClassName='w-40'
+                    containerClassName='flex-grow w-40 md:w-40'
                     value={field.value}
                     onChange={field.onChange}
                   />
@@ -73,7 +73,7 @@ const Slideout = () => {
                   <Select
                     options={positionOptions}
                     placeholder='Opening from'
-                    containerClassName='w-36'
+                    containerClassName='flex-grow w-36 md:w-36'
                     value={field.value}
                     onChange={field.onChange}
                   />

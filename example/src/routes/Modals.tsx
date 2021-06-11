@@ -160,7 +160,7 @@ const openConfirm = async () => {
 </div>`}</Syntax>
       </Section>
       <Section title='Dialog variants'>
-        <div className='space-x-4 flex items-center'>
+        <div className='gap-2 flex items-center'>
           <Button onClick={() => openAlert('warn')}>Warning</Button>
           <Button onClick={() => openAlert('info')}>Info</Button>
           <Button onClick={() => openAlert('danger')}>Danger</Button>
@@ -172,7 +172,7 @@ const openConfirm = async () => {
 
 const { alert } = useDialog()
 
-<div className='space-x-4 flex items-center'>
+<div className='gap-2 flex items-center'>
   <Button onClick={() => openAlert('warn')}>Warning</Button>
   <Button onClick={() => openAlert('info')}>Info</Button>
   <Button onClick={() => openAlert('danger')}>Danger</Button>
