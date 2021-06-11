@@ -1,17 +1,50 @@
-import React, { PropsWithChildren } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, PropsWithChildren, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import clsx from 'clsx'
+import { useScreen, SlideOut, Button } from '@datnq/react-tw'
+import { MenuAlt2Outline } from '@graywolfai/react-heroicons'
 import routes from '../routes'
 import Nav from './Nav'
 import { ReactComponent as Logo } from '../assets/logo.svg'
 
 const Layout = ({ children }: PropsWithChildren<{}>) => {
+  const screen = useScreen()
+  const [open, setOpen] = useState(false)
+
+  const history = useHistory()
+  useEffect(() => {
+    const unlisten = history.listen(() => {
+      if (open) setOpen(false)
+    })
+    return () => {
+      unlisten()
+    }
+  }, [history, open])
+
   return (
-    <div className='min-h-screen grid grid-flow-col grid-cols-layout grid-rows-layout'>
-      <header className='border-r row-span-2'>
-        <Link to='/' className='flex p-4 h-16 items-center'>
-          <Logo className='w-full' />
+    <div
+      className={clsx(
+        'min-h-screen',
+        'flex flex-col',
+        'md:grid md:grid-flow-col md:grid-cols-layout md:grid-rows-layout'
+      )}
+    >
+      <header className='border-r row-span-2 top-0 bg-white flex md:block items-center'>
+        <Link to='/' className='flex p-4 h-16 flex-grow items-center order-2'>
+          <Logo className='md:w-full w-48' />
         </Link>
-        <Nav routes={routes} className='my-8' />
+        {screen.isComputer() ? (
+          <Nav routes={routes} className='my-8' />
+        ) : (
+          <div className='p-4 order-1'>
+            <Button narrow onClick={() => setOpen(true)}>
+              <MenuAlt2Outline className='w-5 h-5' />
+            </Button>
+            <SlideOut onClose={() => setOpen(false)} open={open} size='full'>
+              <Nav routes={routes} className='my-8' />
+            </SlideOut>
+          </div>
+        )}
       </header>
       <main className='p-8 max-w-2xl'>{children}</main>
       <footer className='flex flex-row text-gray-500 text-sm items-center p-4 border-t border-gray-300'>

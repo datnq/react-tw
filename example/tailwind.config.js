@@ -16,7 +16,7 @@ module.exports = {
       },
       gridTemplateRows: {
         layout: 'minmax(0, 1fr) 60px'
-      }
+      },
     }
   },
   variants: {},
