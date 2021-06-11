@@ -53,6 +53,7 @@ export const Options = ({
       leaveTo='opacity-0'
     >
       <Listbox.Options
+        as='div'
         className={clsx(
           'absolute w-56 mt-1 origin-top-right z-10',
           'bg-white rounded shadow-md ring-1 ring-black ring-opacity-5',

@@ -43,7 +43,7 @@ const Select: FC<SelectProps> = ({
       <Options className='min-w-min w-full'>
         <div className='p-1 space-y-1'>
           {options.map((option) => (
-            <Listbox.Option key={option.key} value={option.value}>
+            <Listbox.Option as='div' key={option.key} value={option.value}>
               {({ selected }): ReactElement => (
                 <ListItem selected={selected}>{option.text}</ListItem>
               )}
